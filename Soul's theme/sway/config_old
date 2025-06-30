@@ -1,0 +1,116 @@
+# Variables
+set $mod Mod4  # Super
+set $term alacritty
+set $background ~/.config/waypaper/cache/current.png
+
+
+# 3. Rofi app launcher (from Hyprland)
+bindsym $mod+Alt+Space exec rofi -show drun
+
+# 7. Logout menu (wlogout)
+bindsym $mod+Shift+e exec wlogout
+
+# workspaces
+set $ws1   1:1
+set $ws2   2:2
+set $ws3   3:3
+set $ws4   4:4
+set $ws5   5:5
+set $ws6   6:6
+set $ws7   7:7
+set $ws8   8:8
+set $ws9   9:9
+set $ws0   10:10
+
+# Window borders
+default_border pixel 2
+default_floating_border normal
+hide_edge_borders smart
+
+smart_gaps on
+gaps inner 10
+
+# Autostart
+exec --no-startup-id swaync    # notifications manager
+exec --no-startup-id waypaper   # wallpaper
+exec --no-startup-id waybar     
+
+# Input configuration
+input * {
+    xkb_layout it
+    xkb_variant nodeadkeys
+    xkb_options caps:swapescape
+}
+
+# Output configuration
+output * bg $background fill
+
+
+# ===== BEGIN HYPRLAND CONVERSION ZONE =====
+
+# === keybinding.conf → Sway keybinds ===
+
+# Impostazione Modalità (mod4=Super già definito sopra)
+
+# Applicazioni
+bindsym $mod+Return exec alacritty          # Apri terminale
+bindsym $mod+b exec firefox                 # Apri browser
+bindsym $mod+e exec dolphin --new-window   # Apri file manager
+
+# Controlli Audio (usando pactl & playerctl)
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%            # Aumento volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%            # Riduzione volume
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle                  # Mute toggle
+bindsym XF86AudioPlay exec playerctl play-pause                                     # Play/Pausa
+bindsym XF86AudioPause exec playerctl pause                                         # Pausa
+bindsym XF86AudioNext exec playerctl next                                           # Traccia successiva
+bindsym XF86AudioPrev exec playerctl previous                                       # Traccia precedente
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle          # Mute microfono
+
+# Schermata di blocco
+bindsym XF86ScreenSaver exec swaylock                                                # Lock screen
+
+# === misc.conf → Sway general settings ===
+
+# Gaps (equivalente a window_gap di Hyprland)
+gaps inner 10
+# outer gap
+
+gaps outer 0
+
+# Focus follows mouse (focus_follows_mouse = true)
+focus_follows_mouse yes
+
+# Idle e lockscreen (unisce swayidle + swaylock)
+exec_always --no-startup-id swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"'
+
+# === windowrule.conf → Sway window rules ===
+
+# Assegna applicazioni ai workspace
+for_window [app_id="Alacritty"] move container to workspace $ws1
+for_window [app_id="firefox"] move container to workspace $ws2
+for_window [app_id="Nautilus"] move container to workspace $ws3
+
+# Finestre di dialogo e popup in floating
+for_window [window_role="pop-up"] floating enable
+for_window [app_id="confirm"] floating enable
+
+# === scripts integration ===
+
+# Screenshot (grim + slurp)
+bindsym Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png
+bindsym Shift+Print exec grim ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png
+
+# Window move script (placeholder: moveto.sh)
+bindsym $mod+m exec ~/.config/sway/scripts/moveto.sh left
+# Aggiungi altri keybinds per moveto (up, right, down) se previsti
+
+# Wallpaper script (wal o tuo script personalizzato)
+# Per wal: exec_always --no-startup-id wal -R
+# Per script custom: exec_always --no-startup-id ~/.config/sway/scripts/wallpaper.sh
+
+# Logout menu (già definito: wlogout)
+
