@@ -16,4 +16,5 @@
 - Window
 - Windowrule
 - Workspace
-- 
+- _Waybar config_ 
+- Waybar Style

@@ -4,7 +4,7 @@ set $alt Mod1   # Alt key
 set $term alacritty
 set $menu rofi
 set $file dolphin
-
+set $broser firefox
 
 
 # Home row direction keys, like vim
@@ -64,8 +64,9 @@ input "type:keyboard" {
 # Key bindings
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
-bindsym $mod+$alt+Space exec $menu
+bindsym $mod+Ctrl+Space exec $menu
 bindsym $mod+e exec $file
+bindsym $mod+b exec $browser
 
 ### Drag floating windows by holding down $mod and left mouse button.
 ### Resize them with right mouse button + $mod.
@@ -132,7 +133,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 ### You can "split" the current object of your focus with
 ### $mod+b or $mod+v, for horizontal and vertical splits
 ### respectively.
-bindsym $mod+b splith
+# bindsym $mod+b splith DA VEDERE
 bindsym $mod+v splitv
 
 ### Switch the current container between different layout styles
@@ -197,8 +198,7 @@ bindsym $mod+r mode "resize"
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    
 
 #
 # Status Bar:
@@ -227,3 +227,7 @@ seat * {
 
 # Waybar
 exec_always waybar --config ~/.config/waybar/config --style ~/.config/waybar/style.css
+
+# Screenshots
+bindsym $mod+Shift+s exec grim - | wl-copy
+bindsym Print exec grim
