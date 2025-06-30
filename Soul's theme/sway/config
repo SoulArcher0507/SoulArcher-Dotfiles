@@ -4,7 +4,7 @@ set $alt Mod1   # Alt key
 set $term alacritty
 set $menu rofi
 set $file dolphin
-set $broser firefox
+set $browser firefox
 
 
 # Home row direction keys, like vim
@@ -66,7 +66,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 bindsym $mod+Ctrl+Space exec $menu
 bindsym $mod+e exec $file
-bindsym $mod+b $browser
+bindsym $mod+b exec $browser
 
 ### Drag floating windows by holding down $mod and left mouse button.
 ### Resize them with right mouse button + $mod.
