@@ -18,3 +18,8 @@
 - Workspace
 - _Waybar config_ 
 - Waybar Style
+- Rofi
+- wlogout
+- Wal
+
+Riscrivere colori per waybar e rofi usando lo script di Lore

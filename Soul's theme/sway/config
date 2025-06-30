@@ -28,10 +28,10 @@ focus output DP-1
 
 
 ### Idle configuration
-#exec swayidle -w \
-#        timeout 300 'swaylock -f -c 000000' \
-#        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#        before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+        timeout 300 'swaylock -f -c 000000' \
+        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+        before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -133,7 +133,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 ### You can "split" the current object of your focus with
 ### $mod+b or $mod+v, for horizontal and vertical splits
 ### respectively.
-# bindsym $mod+b splith DA VEDERE
+bindsym $mod+j splith
 bindsym $mod+v splitv
 
 ### Switch the current container between different layout styles

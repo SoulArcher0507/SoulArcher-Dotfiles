@@ -1,0 +1,21 @@
+#!/bin/bash
+
+WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
+WALLPAPER_PATH=$(find $HOME/Pictures/Wallpapers/ -maxdepth 1 -type f -exec basename {} \; | rofi -dmenu -p "Enter wallpaper name:")
+PAPER="${WALLPAPER_DIR}/${WALLPAPER_PATH}"
+
+if [ -z $WALLPAPER_PATH ]; then
+    exit 1
+fi
+
+cp $PAPER "${WALLPAPER_DIR}/active/active.jpg"
+
+pkill -x swaybg
+hyprctl dispatch exec "swaybg -i $PAPER"
+
+$HOME/.config/wal/colors.sh $PAPER
+
+swaync-client -rs
+
+pkill -x waybar
+sway reload
