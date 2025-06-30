@@ -3,7 +3,7 @@ set $mod Mod4
 set $alt Mod1   # Alt key
 set $term alacritty
 set $menu rofi
-
+set $file dolphin
 
 
 
@@ -16,7 +16,7 @@ set $right l
 
 # Output
 ## Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/waypaper/cache/default.png fill
+# output * bg ~/waypaper/cache/default.png fill
 
 output DP-1 mode 1920x1080@144Hz position 0,0
 output HDMI-A-1 mode 1920x1080@60Hz position 1920,0
@@ -65,6 +65,7 @@ input "type:keyboard" {
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
 bindsym $mod+$alt+Space exec $menu
+bindsym $mod+e exec $file
 
 ### Drag floating windows by holding down $mod and left mouse button.
 ### Resize them with right mouse button + $mod.
@@ -218,3 +219,6 @@ bar {
 }
 
 include /etc/sway/config.d/*
+
+# Cursor
+exec-always hyprctl setcursor Bibata-Modern-Ice 24
