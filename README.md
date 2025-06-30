@@ -7,7 +7,7 @@
 - Appunti copiati con rofi
 - Animazioni
 - Autostart
-- Cursor
+- _Cursor_
 - Decoration
 - Environment
 - Keybindings
