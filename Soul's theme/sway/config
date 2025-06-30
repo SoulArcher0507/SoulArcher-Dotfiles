@@ -221,4 +221,4 @@ bar {
 include /etc/sway/config.d/*
 
 # Cursor
-exec-always hyprctl setcursor Bibata-Modern-Ice 24
+exec_always hyprctl setcursor Bibata-Modern-Ice 24
