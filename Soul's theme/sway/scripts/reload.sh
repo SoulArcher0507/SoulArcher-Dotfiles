@@ -1,2 +1,2 @@
 killall waybar
-reload
+sway reload
