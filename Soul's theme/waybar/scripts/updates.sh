@@ -13,10 +13,10 @@ flatpak_count=$(flatpak update --dry-run --app 2>/dev/null | tail -n +2 | wc -l)
 total=$((pacman_count + aur_count + flatpak_count))
 
 # scegli il colore in base al numero di update
-if   [ "$total" -eq 0 ]; then      color="#99c794"   # verde
-elif [ "$total" -lt 10 ]; then     color="#fac863"   # giallo
-else                               color="#ec5f67"   # rosso
+if   [ "$total" -lt 25 ]; then      css_class="green"  #color="#99c794"   # verde
+elif [ "$total" -lt 100 ]; then     css_class="yellow" #color="#fac863"   # giallo
+else                                css_class="red"    #color="#ec5f67"   # rosso
 fi
 
 # esci in JSON per Waybar
-echo "{\"text\":\" $total\",\"tooltip\":\"pacman: $pacman_count | AUR: $aur_count | flatpak: $flatpak_count\",\"color\":\"$color\"}"
+echo "{\"text\":\" $total\",\"tooltip\":\"pacman: $pacman_count | AUR: $aur_count | flatpak: $flatpak_count\",\"class\":\"$css_class\"}"
