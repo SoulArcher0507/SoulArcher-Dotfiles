@@ -35,7 +35,6 @@ button:focus {
 }
 
 button:hover {
-	transform: scale(1.1);
     background-color: @foreground;
 	opacity: 0.8;
     color: #cdd6f4;
