@@ -210,7 +210,6 @@ window#waybar.empty #window {
 
 #custom-tools {
     margin-right:12px;
-    color: @foreground;
 }
 
 #custom-hypridle.active {
