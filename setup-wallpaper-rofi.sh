@@ -10,7 +10,7 @@ mkdir -p "$TARGET_DIR"
 # Genera il file .rasi
 cat > "${TARGET_DIR}/${TARGET_FILE}" <<EOF
 * {
-    current-image: url("${HOME}/Pictures/Wallpapers/active/active.jpg", height);
+    current-image: url("${HOME}/Pictures/Wallpapers/active/active_blur.jpg", height);
 }
 EOF
 

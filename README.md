@@ -21,6 +21,6 @@
 - Rofi
 - wlogout
 - _Wal_
-- Blurred and Square Wallpaper
+- _Blurred and Square Wallpaper_
 
 Riscrivere colori per waybar e rofi usando lo script di Lore
