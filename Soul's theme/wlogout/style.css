@@ -19,10 +19,7 @@ window {
 }
 
 button {
-	width: 20px;        /* largh./alt. fissi */
-    height: 50px;
-    margin: 10px;        /* spazio intorno */
-    padding: 10px;
+	--margin: 20px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 20%;
