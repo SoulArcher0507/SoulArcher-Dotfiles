@@ -4,8 +4,8 @@
 #WALLPAPER="$HOME/Pictures/background.png"
 WALLPAPER=$1
 WAYBAR_CSS="$HOME/.config/waybar/colors.css"
-ROFI_RASI="$HOME/.config/colors/colors.rasi"
-HYPR="$HOME/.config/hypr/hyprland/colors.conf"
+ROFI_RASI="$HOME/.config/rofi/colors.rasi"
+SWAY="$HOME/.config/sway/colors.conf"
 
 
 # === Generate pywal colors without applying them ===
@@ -38,15 +38,30 @@ foreground=$(jq -r '.special.foreground' "$WAL_COLORS")
     echo "}"
 } > "$ROFI_RASI"
 
-#Hyprland
+#Sway
 {
-    echo "\$bg = rgb(${background//#/})"
-    echo "\$fg = rgb(${foreground//#/})"
-
+    # variabili
+    echo "set \$bg       $background"
+    echo "set \$fg       $foreground"
     for i in {0..15}; do
-        color=$(jq -r ".colors.color$i" "$WAL_COLORS" | sed 's/#//')
-        echo "\$color$i = rgb($color)"
+        c=$(jq -r ".colors.color$i" "$HOME/.cache/wal/colors.json")
+        echo "set \$color$i $c"
     done
-} > "$HYPR"
 
-hyprctl reload
+    # esempi di utilizzo (metti queste righe nel tuo config sway o qui se fai include):
+    echo ""
+    echo "# bordo e barra"
+    echo "client.focused          \$color2 \$color0 \$color7"
+    echo "client.unfocused        \$color8 \$color0 \$color7"
+    echo "client.background       \$bg"
+    echo "bar {
+      status_command waybar
+      colors {
+        background \$bg
+        statusline \$fg
+        separator  \$color7
+      }
+    }"
+} > "$SWAY_COLORS"
+
+swaymsg reload

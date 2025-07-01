@@ -35,3 +35,8 @@ slurp
 polkit
 xdg-utils
 wl-clipboard
+
+
+(aur)
+ttf-font-awesome
+ttf-fira-sans
