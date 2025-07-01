@@ -136,7 +136,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 ### You can "split" the current object of your focus with
 ### $mod+b or $mod+v, for horizontal and vertical splits
 ### respectively.
-bindsym $mod+j splith
+bindsym $mod+p splith
 bindsym $mod+v splitv
 
 ### Switch the current container between different layout styles
@@ -234,3 +234,8 @@ exec_always waybar --config ~/.config/waybar/config --style ~/.config/waybar/sty
 # Screenshots
 bindsym $mod+Shift+s exec grim - | wl-copy
 bindsym Print exec grim
+
+# Appereance
+default_border none
+default_floating_border none
+hide_edge_borders both
