@@ -67,7 +67,7 @@ input "type:keyboard" {
 # Key bindings
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
-bindsym $mod+Ctrl+Space exec $menu
+bindsym $mod+Ctrl+Space exec, pkill rofi || rofi -show drun -replace -i
 bindsym $mod+e exec $file
 bindsym $mod+b exec $browser
 
