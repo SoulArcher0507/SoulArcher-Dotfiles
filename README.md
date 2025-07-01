@@ -1,10 +1,9 @@
 # Sway-Config
 
-- Screenshots
+- _Screenshots_
 - Login Configuration
 - _Wallpaper_
 - _Idle_ 
-- Appunti copiati con rofi
 - Animazioni
 - Autostart
 - _Cursor_
@@ -18,6 +17,7 @@
 - Workspace
 - _Waybar config_ 
 - Waybar Style
+- Waybar modules
 - _Rofi_
 - wlogout
 - _Wal_
