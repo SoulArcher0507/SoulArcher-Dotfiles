@@ -83,7 +83,7 @@
         "return-type": "json",
         "exec": "~/.config/waybar/scripts/updates.sh",
         "interval": 1800,
-        "on-click": "-e ~/.config/waybar/scripts/installupdates.sh",
+        "on-click": "alacritty --class dotfiles-floating -e ~/.config/waybar/scripts/installupdates.sh",
         "on-click-right": "alacritty --class dotfiles-floating -e pacseek"
     },
 
