@@ -29,11 +29,21 @@ EOF
 ' &
 
 # Costruisci la lista e lancia rofi
+# Costruisci la lista
 mapfile -t files < <(find "$WALLPAPER_DIR" -maxdepth 1 -type f -printf '%f\n')
-selection=$(printf '%s\n' "${files[@]}" \
-  | rofi -dmenu -p "Scegli sfondo:" \
-         -mesg "Muovi su/giu per cambiare preview" \
-         -input-reading $FIFO)
+
+# Usa tee per inviare ogni riga selezionata al demone ueberzug attraverso la FIFO
+selection=$(
+  printf '%s\n' "${files[@]}" \
+    | tee >(
+        # per ogni riga che passa, scrivi il nome del file sulla pipe
+        while read -r line; do
+          echo "$line" >"$FIFO"
+        done
+      ) \
+    | rofi -dmenu -p "Scegli sfondo:" \
+           -mesg "Muovi su/giu per cambiare preview"
+)
 
 # Pulisce e termina ueberzug
 kill $!       # uccide il demone in background
