@@ -84,7 +84,6 @@ textbox-prompt-colon {
     text-color:                  @foreground;
     border-radius:               2em 0em 0em 2em;
     background-color:            @color5;
-    background-image:            @current-image;
 }
 
 entry {
