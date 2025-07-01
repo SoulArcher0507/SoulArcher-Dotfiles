@@ -245,6 +245,10 @@ exec_always wl-paste --watch cliphist store
 bindsym $mod+Shift+s exec $HOME/.config/sway/scripts/screenshots.sh
 bindsym Print exec grim
 
+# SwayNC
+exec_always --no-startup-id swaync
+
+
 # Appereance
 default_border none
 default_floating_border none

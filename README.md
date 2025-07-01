@@ -27,3 +27,8 @@
 - _Riscrivere colori per waybar e rofi usando lo script di Lore_
 - terminale, pipewire e app in float di default sul config di sway
 - Swaync
+
+
+
+Nello script di installazione attivare i servizi che richiedono attivazione:
+- systemctl --user enable --now swaync.service      systemctl --user start --now swaync.service
