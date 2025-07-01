@@ -37,6 +37,7 @@ xdg-utils
 wl-clipboard
 python-pywal
 jq
+magick
 
 (aur)
 ttf-font-awesome
