@@ -19,4 +19,4 @@ else                                css_class="red"    #color="#ec5f67"   # ross
 fi
 
 # esci in JSON per Waybar
-echo "{\"text\":\"   $total\",\"tooltip\":\"pacman: $pacman_count | AUR: $aur_count | flatpak: $flatpak_count\",\"class\":\"$css_class\"}"
+echo "{\"text\":\" $total\",\"tooltip\":\"pacman: $pacman_count | AUR: $aur_count | flatpak: $flatpak_count\",\"class\":\"$css_class\"}"
