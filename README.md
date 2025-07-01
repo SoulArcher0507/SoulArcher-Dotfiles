@@ -2,7 +2,7 @@
 
 - Screenshots
 - Login Configuration
-- Wallpaper
+- _Wallpaper_
 - _Idle_ 
 - Appunti copiati con rofi
 - Animazioni
@@ -20,6 +20,6 @@
 - Waybar Style
 - Rofi
 - wlogout
-- Wal
+- _Wal_
 
 Riscrivere colori per waybar e rofi usando lo script di Lore
