@@ -4,8 +4,8 @@
 @define-color background @background;
 @define-color groupbackground #363636;
 @define-color buttoncolor #4a4a4a;
-@define-color bordercolor @primary;
-@define-color fontcolor @on_surface;
+@define-color bordercolor @color10;
+@define-color fontcolor @foreground;
 
 * {
     font-family: "Fira Sans Semibold";

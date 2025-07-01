@@ -4,6 +4,7 @@
 #WALLPAPER="$HOME/Pictures/background.png"
 WALLPAPER=$1
 WAYBAR_CSS="$HOME/.config/waybar/colors.css"
+SWAYNC_CSS="$HOME/.config/swaybg/colors.css"
 ROFI_RASI="$HOME/.config/rofi/colors.rasi"
 SWAY="$HOME/.config/sway/colors.conf"
 
@@ -21,6 +22,7 @@ fi
 
 #Waybar
 cp $HOME/.cache/wal/colors-waybar.css $WAYBAR_CSS
+cp $HOME/.cache/wal/colors-waybar.css $SWAYNC_CSS
 
 background=$(jq -r '.special.background' "$WAL_COLORS")
 foreground=$(jq -r '.special.foreground' "$WAL_COLORS")

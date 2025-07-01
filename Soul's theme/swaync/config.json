@@ -64,7 +64,7 @@
             "actions": [
                 {
                     "label": "",
-                    "command": "hyprlock"
+                    "command": "swaylock"
                 },
                 {
                     "label": "󰝟",
