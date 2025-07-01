@@ -222,6 +222,21 @@ window#waybar.empty #window {
     color: #dc2f2f;
 }
 
+
+#custom-chatgpt {
+    margin-right: 16px;
+    background-image: url("assets/openai-white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding-right: 18px;
+    opacity: 0.8;
+    background-color: @foreground;
+    mask: url("assets/openai-white.svg") no-repeat center / contain;
+    -webkit-mask: url("assets/openai-white.svg") no-repeat center / contain;
+}
+
+
 #custom-chatgpt {
     margin-right: 16px;
     background-image: url("assets/openai-white.svg");
