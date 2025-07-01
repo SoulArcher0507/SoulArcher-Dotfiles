@@ -324,16 +324,13 @@ window#waybar.empty #window {
  * Hardware Group
  * ----------------------------------------------------- */
 
-#disk,#memory,#cpu,#language {
+#disk,#memory,#cpu {
     margin:0px;
     padding:0px;
     font-size:16px;
     color:@foreground;
 }
 
-#language {
-    margin-right:10px;
-}
 
 /* -----------------------------------------------------
  * Power Profiles Daemon
