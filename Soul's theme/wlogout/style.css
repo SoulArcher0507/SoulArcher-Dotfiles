@@ -49,6 +49,17 @@ button span {
     font-size: 1.2em; /* Increase the font size */
 }
 
+box {
+    display: flex;
+    justify-content: space-around;  /* oppure space-between, center… */
+}
+
+box > button {
+    flex: 1;               /* tutti i button crescono allo stesso modo */
+    max-width: 100px;      /* (opzionale) per non farli diventare troppo larghi */
+    margin: 10px;          /* spazio tra di loro */
+}
+
 /*
 -----------------------------------------------------
 Buttons
