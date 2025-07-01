@@ -4,7 +4,7 @@
 #WALLPAPER="$HOME/Pictures/background.png"
 WALLPAPER=$1
 WAYBAR_CSS="$HOME/.config/waybar/colors.css"
-SWAYNC_CSS="$HOME/.config/swaybg/colors.css"
+SWAYNC_CSS="$HOME/.config/swaync/colors.css"
 ROFI_RASI="$HOME/.config/rofi/colors.rasi"
 SWAY="$HOME/.config/sway/colors.conf"
 
@@ -20,7 +20,7 @@ if [ ! -f "$WAL_COLORS" ]; then
     exit 1
 fi
 
-#Waybar
+#Waybar + SwayNC
 cp $HOME/.cache/wal/colors-waybar.css $WAYBAR_CSS
 cp $HOME/.cache/wal/colors-waybar.css $SWAYNC_CSS
 
