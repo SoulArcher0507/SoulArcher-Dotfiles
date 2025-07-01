@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
-WALLPAPER_PATH="$(ls $WALLPAPER_DIR/* | while read $imageFile; do echo -en "$imageFile\0icon\x1f$WALLPAPER_DIR/$imageFile\n"; | rofi -no-config -theme fulscreen-preview.rasi -dmenu)"
+WALLPAPER_PATH="$(ls $WALLPAPER_DIR/* | while read A ; do  echo -en "$A\x00icon\x1f~/Pictures/$A\n"; done | rofi -no-config -theme fulscreen-preview.rasi -dmenu)"
 PAPER="${WALLPAPER_DIR}/${WALLPAPER_PATH}"
 
 
