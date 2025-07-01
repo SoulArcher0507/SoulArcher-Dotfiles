@@ -24,7 +24,7 @@ configuration {
 @theme "~/.config/rofi/colors.rasi"
 
 /* ---- Load wallpaper ---- */
-@import "~/Pictures/Wallpaper/active/active.jpg"
+@wallpaper: "~/Pictures/Wallpaper/active/active.jpg";
 
 /* ---- Load border width ---- */
 @import "~/.config/rofi/rofi-border.rasi"
@@ -52,6 +52,8 @@ window {
     border:                      @border-width;
     border-color:                @color11;
     border-radius:               @border-radius;
+    background-color:            @background;
+    
 }
 
 mainbox {
@@ -61,7 +63,7 @@ mainbox {
     orientation:                 vertical;
     children:                    [ "inputbar" , "listbox" ];
     background-color:            transparent;
-    background-image:            url("~/Pictures/Wallpaper/active/active.jpg", width);
+    background-image:            url(@wallpaper, fill);
 }
 
 
