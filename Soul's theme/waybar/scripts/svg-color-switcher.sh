@@ -1,9 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-INPUT_SVG="~/.config/waybar/assets/openai-white.svg"
-OUTPUT_SVG="~/.config/waybar/assets/openai.svg"
-NEWCOLOR=$1
+INPUT_SVG="$HOME/.config/waybar/assets/openai-white.svg"
+OUTPUT_SVG="$HOME/.config/waybar/assets/openai.svg"
+NEWCOLOR="$1"
 
 # Verifica che input esista
 if [ ! -f "$INPUT_SVG" ]; then
