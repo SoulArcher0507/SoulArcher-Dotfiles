@@ -104,7 +104,6 @@ listbox {
     spacing:                     0em;
     orientation:                 horizontal;
     children:                    [ "listview" , "mode-switcher" ];
-    background-color:            transparent;
 }
 
 listview {
@@ -121,7 +120,6 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     cursor:                      "default";
-    background-color:            transparent;
     text-color:                  @foreground;
 }
 
