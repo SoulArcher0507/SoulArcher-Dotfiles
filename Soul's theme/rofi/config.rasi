@@ -24,7 +24,7 @@ configuration {
 @theme "~/.config/rofi/colors.rasi"
 
 /* ---- Load wallpaper ---- */
-@wallpaper: "~/Pictures/Wallpaper/active/active.jpg";
+@wallpaper "~/Pictures/Wallpaper/active/active.jpg";
 
 /* ---- Load border width ---- */
 @import "~/.config/rofi/rofi-border.rasi"
