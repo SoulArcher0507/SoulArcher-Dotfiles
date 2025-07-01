@@ -3,7 +3,7 @@
 @import 'colors.css';
 @define-color background @background;
 @define-color groupbackground #363636;
-@define-color buttoncolor #4a4a4a;
+@define-color buttoncolor @color6;
 @define-color bordercolor @color10;
 @define-color fontcolor @foreground;
 
