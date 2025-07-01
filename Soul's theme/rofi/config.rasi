@@ -39,6 +39,9 @@ configuration {
     foreground: @foreground;
 }
 
+* { current-image: url("~/Pictures/Wallpaper/active/active.jpg", height); }
+
+
 // Main //
 window {
     height:                      35em;
@@ -62,7 +65,7 @@ mainbox {
     orientation:                 vertical;
     children:                    [ "inputbar" , "listbox" ];
     background-color:            transparent;
-    background-image:            url("~/Pictures/Wallpaper/active/acrive.jpg", height);
+    background-image:            @current-image;
 }
 
 
