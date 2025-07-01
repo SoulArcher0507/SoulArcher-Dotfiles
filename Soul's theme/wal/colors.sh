@@ -64,4 +64,5 @@ foreground=$(jq -r '.special.foreground' "$WAL_COLORS")
     }"
 } > "$SWAY_COLORS"
 
+killall waybar
 swaymsg reload

@@ -35,7 +35,8 @@ slurp
 polkit
 xdg-utils
 wl-clipboard
-
+python-pywal
+jq
 
 (aur)
 ttf-font-awesome

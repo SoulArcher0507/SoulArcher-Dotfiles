@@ -17,5 +17,5 @@ $HOME/.config/wal/colors.sh $PAPER
 
 swaync-client -rs
 
-pkill -x waybar
+killall waybar
 sway reload
