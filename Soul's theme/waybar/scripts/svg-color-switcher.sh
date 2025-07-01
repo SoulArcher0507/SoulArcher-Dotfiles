@@ -1,17 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-if [ $# -ne 3 ]; then
-  cat <<EOF
-Uso:
-  $0 input.svg output.svg #RRGGBB
-
-Esempio:
-  $0 openai-white.svg openai-tint.svg #aabbcc
-EOF
-  exit 1
-fi
-
 INPUT_SVG="~/.config/waybar/assets/openai-white.svg"
 OUTPUT_SVG="~/.config/waybar/assets/openai.svg"
 NEWCOLOR="$1"
