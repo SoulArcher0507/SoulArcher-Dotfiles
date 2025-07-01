@@ -225,7 +225,6 @@ window#waybar.empty #window {
 
 #custom-chatgpt {
     margin-right: 16px;
-    background-image: url("assets/openai-white.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -237,16 +236,7 @@ window#waybar.empty #window {
 }
 
 
-#custom-chatgpt {
-    margin-right: 16px;
-    background-image: url("assets/openai-white.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    padding-right: 18px;
-    opacity: 0.8;
-    color: @foreground;
-}
+
 
 /* -----------------------------------------------------
  * Idle Inhibator
