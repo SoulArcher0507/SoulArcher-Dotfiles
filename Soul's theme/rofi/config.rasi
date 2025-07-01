@@ -36,7 +36,7 @@ configuration {
 * {
     color11: @color10;
     color5: @color11;
-    foreground: @foreground;
+    foreground: @fg;
 }
 
 
