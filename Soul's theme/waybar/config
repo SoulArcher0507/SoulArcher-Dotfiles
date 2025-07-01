@@ -78,7 +78,7 @@
 
     // Updates Count
     "custom/updates": {
-        "format": "  {}",
+        "format": "{}",
         "escape": true,
         "return-type": "json",
         "exec": "scripts/updates.sh",
