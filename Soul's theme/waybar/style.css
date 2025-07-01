@@ -224,15 +224,6 @@ window#waybar.empty #window {
     color: #dc2f2f;
 }
 
-#custom-ml4w-welcome {
-    margin-right: 12px;
-    background-image: url("../assets/ml4w-icon.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    padding-right: 20px;
-}
-
 #custom-chatgpt {
     margin-right: 16px;
     background-image: url("../assets/openai.svg");
@@ -286,7 +277,7 @@ window#waybar.empty #window {
     margin: 0px 13px 0px 0px;
     padding:0px;
     font-size:20px;
-    color: @background;
+    color: @foreround;
     opacity: 0.8;
 }
 
@@ -298,7 +289,7 @@ window#waybar.empty #window {
     margin: 0px 13px 0px 0px;
     padding:0px;
     font-size:20px;
-    color: @background;
+    color: @foreground;
     opacity: 0.8;
 }
 
@@ -338,7 +329,7 @@ window#waybar.empty #window {
     margin:0px;
     padding:0px;
     font-size:16px;
-    color:@background;
+    color:@foreground;
 }
 
 #language {
@@ -353,7 +344,7 @@ window#waybar.empty #window {
     margin: 0px 13px 0px 0px;
     padding:0px;
     font-size:16px;
-    color:@background;
+    color:@foreground;
 }
 
 /* -----------------------------------------------------
