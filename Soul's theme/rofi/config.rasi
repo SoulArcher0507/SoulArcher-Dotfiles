@@ -37,6 +37,7 @@ configuration {
     color11: @color10;
     color5: @color11;
     foreground: @fg;
+    fgdarker: @color6;
 }
 
 
@@ -73,7 +74,7 @@ inputbar {
     spacing:                     0em;
     padding:                     5em;
     children:                    [ "textbox-prompt-colon", "entry" ];
-    background-color:            transparent;
+    background-color:            fgdarker;
 }
 
 textbox-prompt-colon {
