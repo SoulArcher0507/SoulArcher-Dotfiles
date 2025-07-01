@@ -134,7 +134,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 ### We just use 1-10 as the default.
 
 # Layout stuff
-for_window [app_id="alacritty" class="dotfiles-floating"] floating enable
+for_window [app_id="alacritty" class="dotfiles-floating"] floating enable   # NON FUNZIONA
 
 
 ### You can "split" the current object of your focus with
