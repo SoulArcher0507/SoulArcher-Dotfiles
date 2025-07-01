@@ -35,11 +35,10 @@ button:focus {
 }
 
 button:hover {
-	transform: scale(1.1);
     background-color: @foreground;
 	opacity: 0.8;
     color: #cdd6f4;
-    background-size: 30%;
+    background-size: 10%;
     margin: 30px;
     border-radius: 80px;
     box-shadow: 0 0 50px #000000;
