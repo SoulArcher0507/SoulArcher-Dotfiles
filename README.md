@@ -18,7 +18,7 @@
 - _Waybar config_ 
 - Waybar modules
 - _Rofi_
-- wlogout
+- _wlogout_ **MODIFICARE TASTI**
 - _Wal_
 - _Blurred and Square Wallpaper_
 - Modulo waybar di qualcosa che non ricordo
@@ -31,3 +31,6 @@
 
 Nello script di installazione attivare i servizi che richiedono attivazione:
 - systemctl --user enable --now swaync.service      systemctl --user start --now swaync.service
+
+
+Nello script attivare multilib di pacman
