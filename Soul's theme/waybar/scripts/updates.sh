@@ -1,70 +1,22 @@
 #!/bin/bash
-#  _   _           _       _             
-# | | | |_ __   __| | __ _| |_ ___  ___  
-# | | | | '_ \ / _` |/ _` | __/ _ \/ __| 
-# | |_| | |_) | (_| | (_| | ||  __/\__ \ 
-#  \___/| .__/ \__,_|\__,_|\__\___||___/ 
-#       |_|                              
-#  
 
-script_name=$(basename "$0")
+# Numero di update da pacman (checkupdates è in pacman-contrib)
+pacman_count=$(checkupdates 2>/dev/null | wc -l)
 
-# Count the instances
-instance_count=$(ps aux | grep -F "$script_name" | grep -v grep | grep -v $$ | wc -l)
+# Numero di update da AUR (yay)
+aur_count=$(yay -Qu --quiet 2>/dev/null | wc -l)
 
-if [ $instance_count -gt 1 ]; then
-    sleep $instance_count
+# Numero di update da flatpak (skip prima riga di header)
+flatpak_count=$(flatpak update --dry-run --app 2>/dev/null | tail -n +2 | wc -l)
+
+# somma totale
+total=$((pacman_count + aur_count + flatpak_count))
+
+# scegli il colore in base al numero di update
+if   [ "$total" -eq 0 ]; then      color="#99c794"   # verde
+elif [ "$total" -lt 10 ]; then     color="#fac863"   # giallo
+else                               color="#ec5f67"   # rosso
 fi
 
-
-# ----------------------------------------------------- 
-# Define threshholds for color indicators
-# ----------------------------------------------------- 
-
-threshhold_green=0
-threshhold_yellow=25
-threshhold_red=100
-install_platform="arch"
-aur_helper="yay"
-
-# ----------------------------------------------------- 
-# Calculate available updates
-# ----------------------------------------------------- 
-
-# flatpak remote-ls --updates
-
-# -----------------------------------------------------------------------------
-# Check for pacman or checkupdates-with-aur database lock and wait if necessary
-# -----------------------------------------------------------------------------
-check_lock_files() {
-    local pacman_lock="/var/lib/pacman/db.lck"
-    local checkup_lock="${TMPDIR:-/tmp}/checkup-db-${UID}/db.lck"
-
-    while [ -f "$pacman_lock" ] || [ -f "$checkup_lock" ]; do
-        sleep 1
-    done
-}
-
-check_lock_files
-
-updates=$(checkupdates-with-aur | wc -l)
-
-# ----------------------------------------------------- 
-# Output in JSON format for Waybar Module custom-updates
-# ----------------------------------------------------- 
-
-css_class="green"
-
-if [ "$updates" -gt $threshhold_yellow ]; then
-    css_class="yellow"
-fi
-
-if [ "$updates" -gt $threshhold_red ]; then
-    css_class="red"
-fi
-
-if [ "$updates" -gt $threshhold_green ]; then
-    printf '{"text": "%s", "alt": "%s", "tooltip": "Click to update your system", "class": "%s"}' "$updates" "$updates" "$css_class"
-else
-    printf '{"text": "0", "alt": "0", "tooltip": "No updates available", "class": "green"}'
-fi
+# esci in JSON per Waybar
+echo "{\"text\":\" $total\",\"tooltip\":\"pacman: $pacman_count | AUR: $aur_count | flatpak: $flatpak_count\",\"color\":\"$color\"}"
