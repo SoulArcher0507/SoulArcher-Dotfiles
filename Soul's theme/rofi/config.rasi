@@ -54,7 +54,6 @@ window {
     border-color:                @color11;
     border-radius:               @border-radius;
     background-image:            @current-image;
-    background-size: cover;
     background-color:            @background;
 }
 
