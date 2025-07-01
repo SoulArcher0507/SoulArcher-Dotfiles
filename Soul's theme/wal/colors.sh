@@ -25,16 +25,22 @@ cp $HOME/.cache/wal/colors-waybar.css $WAYBAR_CSS
 background=$(jq -r '.special.background' "$WAL_COLORS")
 foreground=$(jq -r '.special.foreground' "$WAL_COLORS")
 
-#Rofi
+# Rofi
 {
     echo "* {"
-    echo "bg: $background;"
-    echo "fg: $foreground;"
+    echo "    bg: $background;"
+    echo "    fg: $foreground;"
 
     for i in {0..15}; do
         color=$(jq -r ".colors.color$i" "$WAL_COLORS")
-        echo "color$i: $color;"
+        if [ "$i" -eq 14 ]; then
+            hex=${color#"#"}
+            echo "    color14: #CC$hex;"
+        else
+            echo "    color$i: $color;"
+        fi
     done
+
     echo "}"
 } > "$ROFI_RASI"
 

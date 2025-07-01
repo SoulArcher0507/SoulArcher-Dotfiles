@@ -37,7 +37,7 @@ configuration {
     color11: @color10;
     color5: @color11;
     foreground: @fg;
-    fgdarker: @color6;
+    fgdarker: @color14;
 }
 
 
@@ -105,7 +105,7 @@ listbox {
     spacing:                     0em;
     orientation:                 horizontal;
     children:                    [ "listview" , "mode-switcher" ];
-    background-color:            @fgdarker;
+    background-color:            fgdarker;
 }
 
 listview {
