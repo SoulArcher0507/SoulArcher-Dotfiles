@@ -13,7 +13,7 @@ cp $PAPER "${WALLPAPER_DIR}/active/active.jpg"
 pkill -x swaybg
 swaymsg exec "swaybg -i \"$PAPER\" -m fill &"
 
-$HOME/.config/wal/colors.sh $PAPER
+$HOME/.config/wal/colors.sh "$PAPER"
 
 swaync-client -rs
 
