@@ -64,5 +64,7 @@ foreground=$(jq -r '.special.foreground' "$WAL_COLORS")
     }"
 } > "$SWAY_COLORS"
 
+$HOME/.config/waybar/scripts/svg-color-switcher.sh $foreground
+
 killall waybar
 swaymsg reload
