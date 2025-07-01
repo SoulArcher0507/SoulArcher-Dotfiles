@@ -231,6 +231,10 @@ seat * {
 # Waybar
 exec_always waybar --config ~/.config/waybar/config --style ~/.config/waybar/style.css
 
+# Swaybg
+exec_always swaybg -i $HOME/Pictures/Wallpapers/active/active.jpg -m fill
+
+
 # Screenshots
 bindsym $mod+Shift+s exec grim - | wl-copy
 bindsym Print exec grim
@@ -238,4 +242,4 @@ bindsym Print exec grim
 # Appereance
 default_border none
 default_floating_border none
-hide_edge_borders both
+# hide_edge_borders both

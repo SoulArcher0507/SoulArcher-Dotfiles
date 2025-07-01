@@ -11,7 +11,7 @@ fi
 cp $PAPER "${WALLPAPER_DIR}/active/active.jpg"
 
 pkill -x swaybg
-hyprctl dispatch exec "swaybg -i $PAPER"
+swaymsg exec "swaybg -i \"$PAPER\" -m fill &"
 
 $HOME/.config/wal/colors.sh $PAPER
 
