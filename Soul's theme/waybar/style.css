@@ -224,18 +224,27 @@ window#waybar.empty #window {
 
 
 #custom-chatgpt {
+    /* 1) Assicurati di avere un box visibile */
+    display: inline-block;
     margin-right: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
     padding-right: 18px;
     opacity: 0.8;
+
+    /* 2) Il colore con cui riempire la maschera */
     background-color: @foreground;
-    mask: url("assets/openai-white.svg") no-repeat center / contain;
-    -webkit-mask: url("assets/openai-white.svg") no-repeat center / contain;
+
+    /* 3) Proprietà mask standard */
+    mask-image: url("assets/openai-white.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+
+    /* 4) Prefisso WebKit per Waybar */
+    -webkit-mask-image: url("assets/openai-white.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
 }
-
-
 
 
 /* -----------------------------------------------------
