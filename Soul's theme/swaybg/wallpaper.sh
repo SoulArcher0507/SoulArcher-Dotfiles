@@ -1,58 +1,13 @@
 #!/bin/bash
 
 WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
-FIFO="/tmp/rofi-preview.fifo"
+WALLPAPER_PATH=$(ls $WALLPAPER_DIR/* | while read imageFile; do echo -en "$imageFile\0icon\x1f$WALLPAPER_DIR/$imageFile\n"; | rofi -no-config -theme fulscreen-preview.rasi -dmenu)
+PAPER="${WALLPAPER_DIR}/${WALLPAPER_PATH}"
 
-# Prepara la named pipe
-[[ -e $FIFO ]] && rm $FIFO
-mkfifo $FIFO
 
-# Demone ueberzug: ascolta sulla pipe e mostra l’immagine corrispondente
-bash -c '
-  exec 3<> '"$FIFO"'
-  while read -u 3 line; do
-    # rimuove eventiali preview precedenti
-    ueberzug layer --parser bash <<-EOF
-    [{"action":"remove","identifier":"preview"}]
-EOF
-    # se c’è un file valido, aggiunge il preview
-    if [[ -f "'"$WALLPAPER_DIR"'/$line" ]]; then
-      ueberzug layer --parser bash <<-EOF
-      [{"action":"add",
-        "identifier":"preview",
-        "x":700, "y":200,
-        "width":400, "height":300,
-        "path":"'"$WALLPAPER_DIR"'/$line"}]
-EOF
-    fi
-  done
-' &
-
-# Costruisci la lista e lancia rofi
-# Costruisci la lista
-mapfile -t files < <(find "$WALLPAPER_DIR" -maxdepth 1 -type f -printf '%f\n')
-
-# Usa tee per inviare ogni riga selezionata al demone ueberzug attraverso la FIFO
-selection=$(
-  printf '%s\n' "${files[@]}" \
-    | tee >(
-        # per ogni riga che passa, scrivi il nome del file sulla pipe
-        while read -r line; do
-          echo "$line" >"$FIFO"
-        done
-      ) \
-    | rofi -dmenu -p "Scegli sfondo:" \
-           -mesg "Muovi su/giu per cambiare preview"
-)
-
-# Pulisce e termina ueberzug
-kill $!       # uccide il demone in background
-rm $FIFO
-
-# Selezione valida?
-[[ -z $selection ]] && exit 1
-
-PAPER="$WALLPAPER_DIR/$selection"
+if [ -z $WALLPAPER_PATH ]; then
+    exit 1
+fi
 
 cp $PAPER "${WALLPAPER_DIR}/active/active.jpg"
 
