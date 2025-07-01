@@ -234,6 +234,8 @@ exec_always waybar --config ~/.config/waybar/config --style ~/.config/waybar/sty
 # Swaybg
 exec_always swaybg -i $HOME/Pictures/Wallpapers/active/active.jpg -m fill
 
+# Cliphist
+exec_always wl-paste --watch cliphist store
 
 # Screenshots
 bindsym $mod+Shift+s exec grim - | wl-copy
