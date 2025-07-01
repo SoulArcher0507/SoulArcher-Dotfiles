@@ -70,7 +70,7 @@ bindsym $mod+q kill
 bindsym $mod+Ctrl+Space exec pkill rofi || rofi -show drun -replace -i
 bindsym $mod+e exec $file
 bindsym $mod+b exec $browser
-bindsym $mod+v exec $HOME/.config/waybar/scripts/cliphist.sh
+bindsym $mod+v exec pkill rofi || $HOME/.config/waybar/scripts/cliphist.sh
 
 ### Drag floating windows by holding down $mod and left mouse button.
 ### Resize them with right mouse button + $mod.
@@ -239,7 +239,7 @@ exec_always swaybg -i $HOME/Pictures/Wallpapers/active/active.jpg -m fill
 exec_always wl-paste --watch cliphist store
 
 # Screenshots
-bindsym $mod+Shift+s exec pkill rofi || $HOME/.config/sway/scripts/screenshots.sh
+bindsym $mod+Shift+s exec $HOME/.config/sway/scripts/screenshots.sh
 bindsym Print exec grim
 
 # Appereance
