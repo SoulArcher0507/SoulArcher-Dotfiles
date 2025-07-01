@@ -34,8 +34,8 @@ configuration {
 
 /* ---- Map colors ---- */
 * {
-    color11: @color10;
-    color5: @color2;
+    color11: @background;
+    color5: @background;
     foreground: @foreground;
 }
 
