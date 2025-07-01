@@ -2,21 +2,26 @@
 
 set -euo pipefail
 
-# Se non siamo root, useremo sudo per pacman e AUR helper
-if [[ $EUID -ne 0 ]]; then
-  SUDO='sudo'
-else
-  SUDO=''
+if ! ping -c1 archlinux.org &> /dev/null; then  # verifica connessione internet
+  echo "Connessione a Internet assente."
+  exit 1
 fi
 
-echo "🔄 Aggiornamento database e pacchetti ufficiali (pacman)..."
-$SUDO pacman -Syu --noconfirm --needed
-
-echo "📦 Aggiornamento pacchetti AUR..."
+echo "Aggiornamento pacchetti AUR..."
 $SUDO yay -Syu --noconfirm --needed
 
-echo "🖼️  Aggiornamento Flatpak..."
+echo "Aggiornamento pacchetti Flatpak..."
 flatpak update -y
+
+if [[ $EUID -ne 0 ]]; then  # root enabler
+  echo "Lo script deve essere lanciato da root"
+  exec sudo "$0" "$@"
+fi
+
+echo "Aggiornamento pacchetti pacman..."
+$SUDO pacman -Syu --noconfirm --needed
+
+
 
 echo
 echo "✅ Tutti gli aggiornamenti sono stati completati con successo!"
