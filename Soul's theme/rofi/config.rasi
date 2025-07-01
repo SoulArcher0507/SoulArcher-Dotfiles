@@ -53,6 +53,7 @@ window {
     border:                      @border-width;
     border-color:                @color11;
     border-radius:               @border-radius;
+    background-image:            @current-image;
     background-color:            @background;
 }
 
@@ -63,7 +64,6 @@ mainbox {
     orientation:                 vertical;
     children:                    [ "inputbar" , "listbox" ];
     background-color:            transparent;
-    background-image:            @current-image;
 }
 
 
@@ -104,6 +104,7 @@ listbox {
     spacing:                     0em;
     orientation:                 horizontal;
     children:                    [ "listview" , "mode-switcher" ];
+    background-color:            transparent;
 }
 
 listview {
