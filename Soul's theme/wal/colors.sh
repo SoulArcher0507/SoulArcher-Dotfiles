@@ -35,7 +35,7 @@ foreground=$(jq -r '.special.foreground' "$WAL_COLORS")
         color=$(jq -r ".colors.color$i" "$WAL_COLORS")
         if [ "$i" -eq 14 ]; then
             hex=${color#"#"}
-            echo "    color14: #CC$hex;"
+            echo "    color14: #99$hex;"
         else
             echo "    color$i: $color;"
         fi
