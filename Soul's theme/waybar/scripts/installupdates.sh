@@ -67,3 +67,7 @@ else
     echo "  - $pkg"
   done
 fi
+
+echo
+read -n1 -r -p "Premi un tasto per chiudere..." key
+echo

@@ -134,6 +134,9 @@ bindsym $mod+Shift+0 move container to workspace number 10
 ### We just use 1-10 as the default.
 
 # Layout stuff
+for_window [class="dotfiles-floating"] floating enable
+
+
 ### You can "split" the current object of your focus with
 ### $mod+b or $mod+v, for horizontal and vertical splits
 ### respectively.
