@@ -239,7 +239,7 @@ exec_always swaybg -i $HOME/Pictures/Wallpapers/active/active.jpg -m fill
 exec_always wl-paste --watch cliphist store
 
 # Screenshots
-bindsym $mod+Shift+s exec $HOME/.config/sway/scripts/screenshots.sh
+bindsym $mod+Shift+s exec pkill rofi || $HOME/.config/sway/scripts/screenshots.sh
 bindsym Print exec grim
 
 # Appereance
