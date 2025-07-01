@@ -138,7 +138,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 ### $mod+b or $mod+v, for horizontal and vertical splits
 ### respectively.
 bindsym $mod+p splith
-bindsym $mod+v splitv
+bindsym $mod+l splitv
 
 ### Switch the current container between different layout styles
 bindsym $mod+s layout stacking
