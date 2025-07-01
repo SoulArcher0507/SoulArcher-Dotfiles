@@ -139,7 +139,6 @@ mode-switcher {
 button {
     cursor:                      pointer;
     border-radius:               2em;
-    background-color:            @background;
     text-color:                  @foreground;
 }
 
