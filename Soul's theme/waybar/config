@@ -97,8 +97,8 @@
     // Power Menu
     "custom/exit": {
         "format": "",
-        "on-click": "../hypr/scripts/wlogout.sh",
-        "on-click-right": "hyprlock",
+        "on-click": "~/.config/sway/scripts/wlogout.sh",
+        "on-click-right": "swaylock",
         "tooltip-format": "Left: Power menu\nRight: Lock screen"
     },
 
