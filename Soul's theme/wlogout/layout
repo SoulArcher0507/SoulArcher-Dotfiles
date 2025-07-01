@@ -1,12 +1,12 @@
 {
     "label" : "lock",
-    "action" : "hyprlock",
+    "action" : "swaylock",
     "text" : "Lock",
     "keybind" : "l"
 }
 {
     "label" : "logout",
-    "action" : "~sleep 1; hyprctl dispatch exit",
+    "action" : "~sleep 1; swaymsg exit",
     "text" : "Log Out",
     "keybind" : "e"
 }

@@ -5,6 +5,7 @@
 WALLPAPER=$1
 WAYBAR_CSS="$HOME/.config/waybar/colors.css"
 SWAYNC_CSS="$HOME/.config/swaync/colors.css"
+WLOGOUT_CSS="$HOME/.config/wlogout/colors.css"
 ROFI_RASI="$HOME/.config/rofi/colors.rasi"
 SWAY="$HOME/.config/sway/colors.conf"
 
@@ -23,6 +24,7 @@ fi
 #Waybar + SwayNC
 cp $HOME/.cache/wal/colors-waybar.css $WAYBAR_CSS
 cp $HOME/.cache/wal/colors-waybar.css $SWAYNC_CSS
+cp $HOME/.cache/wal/colors-waybar.css $WLOGOUT_CSS
 
 background=$(jq -r '.special.background' "$WAL_COLORS")
 foreground=$(jq -r '.special.foreground' "$WAL_COLORS")

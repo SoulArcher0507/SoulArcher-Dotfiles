@@ -16,7 +16,6 @@
 - Windowrule
 - Workspace
 - _Waybar config_ 
-- Waybar Style
 - Waybar modules
 - _Rofi_
 - wlogout
@@ -26,8 +25,8 @@
 - _Cliphist_
 - _Riscrivere colori per waybar e rofi usando lo script di Lore_
 - terminale, pipewire e app in float di default sul config di sway
-- Swaync
-
+- _Swaync_
+- Colori Waybar, Swaync, rofi
 
 
 Nello script di installazione attivare i servizi che richiedono attivazione:
