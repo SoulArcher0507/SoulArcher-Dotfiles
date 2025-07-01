@@ -78,8 +78,8 @@
 
     // Updates Count
     "custom/updates": {
-        "format": "{}",
-        "escape": true,
+        "format": "{text}",
+        "escape": false,
         "return-type": "json",
         "exec": "scripts/updates.sh",
         "interval": 1800,
