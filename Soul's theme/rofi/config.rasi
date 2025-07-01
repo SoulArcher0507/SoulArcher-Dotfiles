@@ -140,6 +140,7 @@ button {
     cursor:                      pointer;
     border-radius:               2em;
     text-color:                  @foreground;
+    background-color:            transparent;
 }
 
 button selected {
@@ -154,6 +155,7 @@ element {
     spacing:                     0em;
     padding:                     0.5em;
     cursor:                      pointer;
+    background-color:            transparent;
     text-color:                  @foreground;
 }
 
