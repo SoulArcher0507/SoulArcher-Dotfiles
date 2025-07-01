@@ -30,7 +30,7 @@ button {
 }
 
 button:focus {
-    background-size: 22%;
+    background-size: 11%;
 	border: 0px;
 }
 
@@ -39,7 +39,7 @@ button:hover {
 	opacity: 0.8;
     color: #cdd6f4;
     background-size: 30%;
-    margin: 10px;
+    margin: 30px;
     border-radius: 80px;
     box-shadow: 0 0 50px #000000;
 }
