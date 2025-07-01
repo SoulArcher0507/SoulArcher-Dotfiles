@@ -228,8 +228,6 @@ window#waybar.empty #window {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 20px;
-    height: 20px;
     padding-right: 18px;
     opacity: 0.8;
     color: @foreground;
