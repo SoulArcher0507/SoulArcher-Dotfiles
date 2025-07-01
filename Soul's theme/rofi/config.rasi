@@ -35,7 +35,7 @@ configuration {
 /* ---- Map colors ---- */
 * {
     color11: @color10;
-    color5: @color11;
+    color5: @color2;
     foreground: @foreground;
 }
 
