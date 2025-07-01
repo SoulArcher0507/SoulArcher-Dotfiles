@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
-WALLPAPER_PATH=$(ls $WALLPAPER_DIR | while read A ; do  echo -en "$A\x00icon\x1f$WALLPAPER_DIR/$A\n"; done | rofi -dmenu -p "Enter wallpaper name:")
+WALLPAPER_PATH=$(ls -p $WALLPAPER_DIR | grep -v '/$' | while read A ; do  echo -en "$A\x00icon\x1f$WALLPAPER_DIR/$A\n"; done | rofi -dmenu -p "Enter wallpaper name:")
 PAPER="${WALLPAPER_DIR}/${WALLPAPER_PATH}"
 
 
