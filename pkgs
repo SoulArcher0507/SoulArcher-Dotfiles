@@ -38,6 +38,7 @@ wl-clipboard
 python-pywal
 jq
 magick
+cliphist
 
 (aur)
 ttf-font-awesome

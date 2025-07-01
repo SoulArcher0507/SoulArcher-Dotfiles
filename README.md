@@ -18,10 +18,11 @@
 - Workspace
 - _Waybar config_ 
 - Waybar Style
-- Rofi
+- _Rofi_
 - wlogout
 - _Wal_
 - _Blurred and Square Wallpaper_
 - Modulo waybar di qualcosa che non ricordo
+- Cliphist
 
 Riscrivere colori per waybar e rofi usando lo script di Lore
