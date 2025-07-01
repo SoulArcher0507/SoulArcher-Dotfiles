@@ -24,7 +24,7 @@ configuration {
 @theme "~/.config/rofi/colors.rasi"
 
 /* ---- Load wallpaper ---- */
-@import "~/Pictures/Wallpaper/active/active.jpg"
+@import "~/.config/rofi/current-wallpaper.rasi"
 
 /* ---- Load border width ---- */
 @import "~/.config/rofi/rofi-border.rasi"
@@ -38,8 +38,6 @@ configuration {
     color5: @color11;
     foreground: @foreground;
 }
-
-* { current-image: url("~/Pictures/Wallpaper/active/active.jpg", height); }
 
 
 // Main //
