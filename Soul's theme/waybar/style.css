@@ -225,16 +225,14 @@ window#waybar.empty #window {
 
 #custom-chatgpt {
     margin-right: 16px;
+    background-image: url("assets/openai-white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     padding-right: 18px;
     opacity: 0.8;
-    background-color: @foreground;
-    -webkit-mask-image: url("assets/openai-white.svg");
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size: contain;
+    color: @foreground;
 }
-
-
 
 
 /* -----------------------------------------------------
