@@ -23,6 +23,6 @@
 - _Wal_
 - _Blurred and Square Wallpaper_
 - Modulo waybar di qualcosa che non ricordo
-- Cliphist
+- _Cliphist_
 
 Riscrivere colori per waybar e rofi usando lo script di Lore
