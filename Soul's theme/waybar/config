@@ -90,7 +90,7 @@
     // Wallpaper
     "custom/wallpaper": {
         "format": "",
-        "on-click": "bash -c waypaper &",
+        "on-click": "~/.config/swaybg/wallpaper.sh",
         "tooltip-format": "Select a wallpaper"
     },
 
