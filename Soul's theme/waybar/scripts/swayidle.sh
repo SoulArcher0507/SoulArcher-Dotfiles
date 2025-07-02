@@ -11,10 +11,12 @@ fi
 if [[ "$1" == "toggle" ]]; then
     if pgrep -x swayidle >/dev/null; then
         pkill -x swayidle
+        pkill -RTMIN+10 waybar
     else
         swayidle -w \
             timeout 300 'swaylock -f -c 000000' \
             timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
             before-sleep 'swaylock -f -c 000000'
+            pkill -RTMIN+10 waybar
     fi
 fi

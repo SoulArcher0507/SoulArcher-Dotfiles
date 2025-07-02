@@ -135,6 +135,7 @@
         "escape": true,
         "exec-on-event": true,
         "interval": 60,
+        "signal": 10,
         "exec": "~/.config/waybar/scripts/swayidle.sh status",
         "on-click": "~/.config/waybar/scripts/swayidle.sh toggle"
     },
