@@ -253,8 +253,8 @@ exec_always --no-startup-id swaync
 # Appereance
 default_border none
 default_floating_border none
-gaps inner 10
-gaps outer 20
+gaps inner 5
+gaps outer 10
 default_border pixel 3
 #client_focused @color11
 #client_unfocused @color8
