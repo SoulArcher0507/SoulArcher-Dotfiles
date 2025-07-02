@@ -29,6 +29,7 @@
 - _Swaync_
 -- Modulo Waybar Kdeconnect
 - Colori Waybar, Swaync, rofi
+- Notifiche che se ripremo te chiude
 
 
 Nello script di installazione attivare i servizi che richiedono attivazione:
