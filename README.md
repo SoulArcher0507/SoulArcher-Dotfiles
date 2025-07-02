@@ -27,9 +27,9 @@
 - _Dolphin fix_
 - _Colori Hyprland_
 - _Swaync_
--- Modulo Waybar Kdeconnect
+-- _Modulo Waybar Kdeconnect_
 - _Colori Waybar, Swaync, rofi_
-- Notifiche che se ripremo te chiude
+
 
 
 Nello script di installazione attivare i servizi che richiedono attivazione:
