@@ -10,19 +10,17 @@ source "$tmpfile"
 rm "$tmpfile"
 
 # Comando di lock (swaylock)
-lock_cmd="swaylock -f \
+lock_cmd="swaylock -f -e \
   --image \"$HOME/Pictures/Wallpapers/active/active_blur.jpg\" \
-  --indicator-size=200 \
-  --indicator-thickness=3 \
-  --indicator-radius=40 \
-  --inside-color=${fg} \
-  --ring-color=${color10} \
-  --key-hl-color=${color10} \
-  --separator-color=${fg} \
-  --verif-color=${color10} \
-  --wrong-color=${color9} \
-  --text-color=${color1} \
-  --fade-in 1.0"
+  --indicator-thickness 3 \
+  --indicator-radius 40 \
+  --inside-color ${fg} \
+  --ring-color ${color10} \
+  --key-hl-color ${color10} \
+  --separator-color ${fg} \
+  --text-verif-color ${color10} \
+  --text-wrong-color ${color9} \
+  --text-color ${color1}"
 
 # Avvia swayidle in modalità “-w” (wait for resume)
 exec swayidle -w \
