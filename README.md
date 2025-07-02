@@ -38,3 +38,6 @@ Nello script di installazione attivare i servizi che richiedono attivazione:
 
 
 Nello script attivare multilib di pacman
+
+Runnare questo comando dopo installazione per dolphin
+XDG_MENU_PREFIX=arch- kbuildsycoca6
