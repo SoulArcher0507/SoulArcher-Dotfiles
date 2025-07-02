@@ -13,7 +13,7 @@ fi
 cp $PAPER "${WALLPAPER_DIR}/active/active.jpg"
 
 pkill -x swaybg
-swaymsg exec "swaybg -i \"$PAPER\" -m fill &"
+swaybg -i \"$PAPER\" -m fill &
 
 magick "$WALLPAPER_DIR/active/active.jpg" -resize 75% "$WALLPAPER_DIR/active/active_blur.jpg"
 magick "$WALLPAPER_DIR/active/active_blur.jpg" -blur "50x30" "$WALLPAPER_DIR/active/active_blur.jpg"
@@ -21,7 +21,4 @@ magick "$WALLPAPER_DIR/active/active.jpg" -gravity Center -extent 1:1 "$WALLPAPE
 
 $HOME/.config/wal/colors.sh "$PAPER"
 
-swaync-client -rs
-
-killall waybar
-sway reload
+$HOME/.config/hypr/scripts/reload.sh

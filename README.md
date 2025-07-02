@@ -4,19 +4,19 @@
 - Login Configuration
 - _Wallpaper_
 - _Idle_ 
-- Animazioni
-- Autostart
+- _Animazioni_
+- _Autostart_
 - _Cursor_
-- Decoration
-- Environment
-- Keybindings
-- Layout
-- Misc
-- Window
-- Windowrule
-- Workspace
+- _Decoration_
+- _Environment_
+- _Keybindings_
+- _Layout_
+- _Misc_
+- _Window_
+- _Windowrule_
+- _Workspace_
 - _Waybar config_ 
-- Waybar modules
+- _Waybar modules_
 - _Rofi_
 - _wlogout_
 - _Wal_
@@ -24,13 +24,16 @@
 - _Modulo waybar swayidle_
 - _Cliphist_
 - _Riscrivere colori per waybar e rofi usando lo script di Lore_
-- terminale, pipewire e app in float di default sul config di sway
+- _Dolphin fix_
+- _Colori Hyprland_
 - _Swaync_
+-- Modulo Waybar Kdeconnect
 - Colori Waybar, Swaync, rofi
 
 
 Nello script di installazione attivare i servizi che richiedono attivazione:
 - systemctl --user enable --now swaync.service      systemctl --user start --now swaync.service
+- sudo systemctl enable --now power-profiles-daemon.service
 
 
 Nello script attivare multilib di pacman
