@@ -135,8 +135,8 @@
         "escape": true,
         "exec-on-event": true,
         "interval": 60,
-        "exec": "~/.config/sway/scripts/swayidle.sh status",
-        "on-click": "~/.config/sway/scripts/swayidle.sh toggle"
+        "exec": "~/.config/waybar/scripts/swayidle.sh status",
+        "on-click": "~/.config/waybar/scripts/swayidle.sh toggle"
     },
 
     // Keyboard State
