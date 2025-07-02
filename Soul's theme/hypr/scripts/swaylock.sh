@@ -29,7 +29,12 @@ lock_cmd="swaylock -f \
 
 # Avvia swayidle in modalità “-w” (wait for resume)
 exec swayidle -w \
-  timeout 30    "$lock_cmd"                             \  # 5 minuti di inattività → lock              300
-  resume         "swaymsg 'output * dpms on'"            \  # al resume, riaccendi i monitor
-  timeout 30    "swaymsg 'output * dpms off'"           \  # dopo altri 5 minuti, DPMS off              600
-  before-sleep   "$lock_cmd && swaymsg 'output * dpms off'"   # prima di sleep → lock + DPMS off
+  timeout 30    "$lock_cmd"                             \
+  resume         "swaymsg 'output * dpms on'"            \
+  timeout 30    "swaymsg 'output * dpms off'"           \
+  before-sleep   "$lock_cmd && swaymsg 'output * dpms off'"   
+
+# 5 minuti di inattività → lock              300
+# al resume, riaccendi i monitor
+# dopo altri 5 minuti, DPMS off              600
+# prima di sleep → lock + DPMS off
