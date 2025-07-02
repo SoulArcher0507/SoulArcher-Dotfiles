@@ -255,7 +255,7 @@ default_border none
 default_floating_border none
 gaps inner 10
 gaps outer 20
-default_border pixel 5
+default_border pixel 3
 #client_focused @color11
 #client_unfocused @color8
 # default_layout splith   # DA METTERE DWINDLE
