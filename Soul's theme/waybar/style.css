@@ -214,11 +214,11 @@ window#waybar.empty #window {
     color: @foreground;
 }
 
-#custom-hypridle.active {
-    color: @background;
+#custom-swayidle.active {
+    color: @foreground;
 }
 
-#custom-hypridle.notactive {
+#custom-swayidle.notactive {
     color: #dc2f2f;
 }
 

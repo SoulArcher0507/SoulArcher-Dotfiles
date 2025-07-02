@@ -128,8 +128,8 @@
         "escape": true
     },
 
-    // Hypridle inhibitor
-    "custom/hypridle": {
+    // Swayidle inhibitor
+    "custom/swayidle": {
         "format": "",
         "return-type": "json",
         "escape": true,
@@ -328,7 +328,7 @@
         "modules": [
         "custom/tools",
         "custom/cliphist",
-        "custom/hypridle",
+        "custom/swayidle",
         "custom/wallpaper"
         ]
     }
