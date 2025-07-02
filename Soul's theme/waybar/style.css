@@ -216,10 +216,14 @@ window#waybar.empty #window {
 
 #custom-swayidle.active {
     color: @foreground;
+    margin-right:12px;
+    font-size: 20px;
 }
 
 #custom-swayidle.notactive {
     color: #dc2f2f;
+    margin-right:12px;
+    font-size: 20px;
 }
 
 
