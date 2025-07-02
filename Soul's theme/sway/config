@@ -23,6 +23,7 @@ set $right l
 
 output DP-1 mode 1920x1080@144Hz position 0,0
 output HDMI-A-1 mode 1920x1080@60Hz position 1920,0
+output Virtual-1 mode 1920x1080@60Hz
 
 focus output DP-1
 
