@@ -43,9 +43,14 @@ cliphist
 power-profiles-daemon
 kdeconnectd
 archlinux-xdg-menu
-
+qt5ct
+ttf-hack
+kvantum
+breeze-icons
+breeze
 
 (aur)
 ttf-font-awesome
 ttf-fira-sans
 pacseek
+qt6ct-kde
