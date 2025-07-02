@@ -24,14 +24,14 @@
 
     // Modules Left
     "modules-left": [
-        "sway/workspaces",
+        "hyprland/workspaces",
         "group/quicklinks",
         "custom/empty"
     ],
 
     // Modules Center
     "modules-center": [
-        "sway/window",
+        "hyprland/window",
         "custom/empty"
     ],
 
