@@ -6,7 +6,7 @@ $(swaymsg -t get_outputs -r -p | jq -r '.[] | select(.focused==true) | "\(.width
 EOF
 
 # Calcola il margin verticale in base all'altezza e alla scala
-w_margin=$(( res_h * 27 / scale ))
+w_margin=$(( res_h * 50 / scale ))
 
 # Lancia wlogout con i bordi calcolati
 # wlogout -b 5 -m 150
