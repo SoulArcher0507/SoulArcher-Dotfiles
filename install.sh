@@ -62,4 +62,7 @@ systemctl --user enable --now swaync.service
 systemctl --user start --now swaync.service
 sudo systemctl enable --now power-profiles-daemon.service
 
+cp -r Wallpapers $HOME/Pictures
+
 echo "=== Tema '$SELECTED' installato con successo! ==="
+
