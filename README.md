@@ -4,7 +4,7 @@
 - Login Configuration
 - _Wallpaper_
 - _Idle_ 
-- Animazioni
+- _Animazioni_
 - _Autostart_
 - _Cursor_
 - _Decoration_
