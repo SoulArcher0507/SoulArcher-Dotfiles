@@ -69,7 +69,7 @@ input "type:keyboard" {
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
 bindsym $mod+Ctrl+Space exec pkill rofi || rofi -show drun -replace -i
-bindsym $mod+e exec $file
+bindsym $mod+e exec $file --new-window
 bindsym $mod+b exec $browser
 bindsym $mod+v exec pkill rofi || $HOME/.config/waybar/scripts/cliphist.sh
 
@@ -253,4 +253,12 @@ exec_always --no-startup-id swaync
 # Appereance
 default_border none
 default_floating_border none
-# hide_edge_borders both
+gaps inner 5
+gaps outer 10
+default_border pixel 3
+client.focused @color11
+client.unfocused @color8
+default_layout splith   # DA METTERE DWINDLE
+
+
+

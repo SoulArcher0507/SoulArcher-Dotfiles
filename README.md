@@ -21,7 +21,7 @@
 - _wlogout_
 - _Wal_
 - _Blurred and Square Wallpaper_
-- Modulo waybar di qualcosa che non ricordo
+- _Modulo waybar swayidle_
 - _Cliphist_
 - _Riscrivere colori per waybar e rofi usando lo script di Lore_
 - terminale, pipewire e app in float di default sul config di sway
