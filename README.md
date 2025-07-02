@@ -28,7 +28,7 @@
 - _Colori Hyprland_
 - _Swaync_
 -- Modulo Waybar Kdeconnect
-- Colori Waybar, Swaync, rofi
+- _Colori Waybar, Swaync, rofi_
 - Notifiche che se ripremo te chiude
 
 
