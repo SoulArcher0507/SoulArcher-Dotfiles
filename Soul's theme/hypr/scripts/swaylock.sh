@@ -12,8 +12,6 @@ rm "$tmpfile"
 # Comando di lock (swaylock)
 lock_cmd="swaylock -f \
   --image \"$HOME/Pictures/Wallpapers/active/active_blur.jpg\" \
-  --clock \
-  --clock-format=\"%H:%M\" \
   --indicator \
   --indicator-size=200 \
   --indicator-thickness=3 \
