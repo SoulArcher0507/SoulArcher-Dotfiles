@@ -14,7 +14,7 @@ configuration {
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
     window-format:              "{w} · {c} · {t}";
-    
+    display-wayland = true;
 }
 
 /* ---- Load font ---- */
@@ -54,6 +54,7 @@ window {
     border-color:                @color11;
     border-radius:               @border-radius;
     background-image:            @current-image;
+    layer: overlay;
 }
 
 mainbox {
