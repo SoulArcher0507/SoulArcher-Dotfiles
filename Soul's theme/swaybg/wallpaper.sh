@@ -22,3 +22,4 @@ magick "$WALLPAPER_DIR/active/active.jpg" -gravity Center -extent 1:1 "$WALLPAPE
 $HOME/.config/wal/colors.sh "$PAPER"
 
 $HOME/.config/hypr/scripts/reload.sh
+
