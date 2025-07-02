@@ -1,7 +1,7 @@
 # Sway-Config
 
 - _Screenshots_
-- Login Configuration
+- _Login Configuration_
 - _Wallpaper_
 - _Idle_ 
 - _Animazioni_
@@ -27,7 +27,7 @@
 - _Dolphin fix_
 - _Colori Hyprland_
 - _Swaync_
--- _Modulo Waybar Kdeconnect_
+- _Modulo Waybar Kdeconnect_
 - _Colori Waybar, Swaync, rofi_
 
 
@@ -37,7 +37,7 @@ Nello script di installazione attivare i servizi che richiedono attivazione:
 - sudo systemctl enable --now power-profiles-daemon.service
 
 
-Nello script attivare multilib di pacman
+_Nello script attivare multilib di pacman_
 
-Runnare questo comando dopo installazione per dolphin
+_Runnare questo comando dopo installazione per dolphin_
 XDG_MENU_PREFIX=arch- kbuildsycoca6

@@ -1,0 +1,56 @@
+- hyprland
+- sway
+- swaync
+- hypridle
+- hyprlock
+- swaybg
+- alacritty
+- waybar
+- ttf-nerd-fonts-symbols
+- rofi
+- brightnessctl
+- mako
+- dolphin
+- flatpak
+- networkmanager
+- network-manager-applet
+- git
+- okular
+- pavucontrol
+- man-db
+- tree
+- cups
+- neovim
+- dotnet-sdk
+- openmpi
+- nmap
+- traceroute
+- wireshark-qt
+- timeshift
+- firefox
+- wlroots0.18
+- xorg-xwayland
+- xdg-desktop-portal-hyprland
+- grim
+- slurp
+- polkit
+- xdg-utils
+wl-clipboard
+python-pywal
+jq
+imagemagick
+cliphist
+power-profiles-daemon
+kdeconnect
+archlinux-xdg-menu
+qt5ct
+ttf-hack
+kvantum
+breeze-icons
+breeze
+
+(aur)
+ttf-font-awesome
+ttf-fira-sans
+pacseek
+qt6ct-kde
