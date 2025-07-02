@@ -18,7 +18,7 @@
 - _Waybar config_ 
 - Waybar modules
 - _Rofi_
-- _wlogout_ **MODIFICARE TASTI**
+- _wlogout_
 - _Wal_
 - _Blurred and Square Wallpaper_
 - Modulo waybar di qualcosa che non ricordo

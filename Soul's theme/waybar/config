@@ -193,7 +193,7 @@
         "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click": "scripts/wifi-menu.sh"  // nm-applet --indicator
+        "on-click": "~/.config/waybar/scripts/wifi-menu.sh"  // nm-applet --indicator
     },
 
     // Battery

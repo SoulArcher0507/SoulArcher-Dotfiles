@@ -23,7 +23,7 @@ options+=("Edit connections (nm-connection-editor)")
 options+=("Cancel")
 
 # Lancia rofi
-chosen=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -p "Wi-Fi:")
+chosen=$(printf '%s\n' "${options[@]}" | rofi -dmenu -replace -config ~/.config/rofi/config-cliphist.rasi -i -p "Wi-Fi:")
 
 if [[ -z "$chosen" ]] || [[ "$chosen" == "Cancel" ]]; then
     exit 0
