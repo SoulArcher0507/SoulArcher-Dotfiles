@@ -14,7 +14,7 @@ configuration {
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
     window-format:              "{w} · {c} · {t}";
-    display-wayland = true;
+    display-wayland: true;
 }
 
 /* ---- Load font ---- */
