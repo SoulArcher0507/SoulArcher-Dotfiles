@@ -14,19 +14,19 @@ lock_cmd="swaylock -f -e \
   --image \"$HOME/Pictures/Wallpapers/active/active_blur.jpg\" \
   --indicator-thickness 3 \
   --indicator-radius 40 \
-  --inside-color ${fg} \
-  --ring-color ${color10} \
-  --key-hl-color ${color10} \
-  --separator-color ${fg} \
-  --text-verif-color ${color10} \
-  --text-wrong-color ${color9} \
-  --text-color ${color1}"
+  --inside-color $fg \
+  --ring-color $color10 \
+  --key-hl-color $color10 \
+  --separator-color $fg \
+  --text-verif-color $color10 \
+  --text-wrong-color $color9 \
+  --text-color $color1"
 
 # Avvia swayidle in modalità “-w” (wait for resume)
 exec swayidle -w \
-  timeout 30    "$lock_cmd"                             \
+  timeout 10    "$lock_cmd"                             \
   resume         "swaymsg 'output * dpms on'"            \
-  timeout 30    "swaymsg 'output * dpms off'"           \
+  timeout 10    "swaymsg 'output * dpms off'"           \
   before-sleep   "$lock_cmd && swaymsg 'output * dpms off'"   
 
 # 5 minuti di inattività → lock              300
