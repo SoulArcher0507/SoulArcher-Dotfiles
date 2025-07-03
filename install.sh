@@ -58,6 +58,8 @@ XDG_MENU_PREFIX=arch- kbuildsycoca6
 "$SCRIPT_DIR/dolphin-terminal.sh"
 sudo "$SCRIPT_DIR/sddm-theme-install.sh"
 "$SCRIPT_DIR/dark-mode-gtk.sh"
+"$SCRIPT_DIR/usb_fat32_packages_installer.sh"
+"$SCRIPT_DIR/vencord.sh"
 
 cp -r Wallpapers $HOME/Pictures/Wallpapers
 mkdir -p "Documents"
