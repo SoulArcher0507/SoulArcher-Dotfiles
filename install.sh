@@ -59,17 +59,13 @@ XDG_MENU_PREFIX=arch- kbuildsycoca6
 sudo "$SCRIPT_DIR/sddm-theme-install.sh"
 "$SCRIPT_DIR/dark-mode-gtk.sh"
 
-cp -r Wallpapers $HOME/Pictures
+cp -r Wallpapers $HOME/Pictures/Wallpapers
 
 
-systemctl --user enable --now swaync.service
-systemctl --user start --now swaync.service
 sudo systemctl enable --now power-profiles-daemon.service
 sudo systemctl enable --now cups.service  # stampante
 sudo usermod -aG lp $USER   # add user to printer group
 sudo systemctl enable --now libvirtd.socket
-
-cp -r Wallpapers $HOME/Pictures
 
 echo "=== Tema '$SELECTED' installato con successo! ==="
 
