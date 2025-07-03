@@ -19,7 +19,8 @@ magick "$WALLPAPER_DIR/active/active.jpg" -resize 75% "$WALLPAPER_DIR/active/act
 magick "$WALLPAPER_DIR/active/active_blur.jpg" -blur "50x30" "$WALLPAPER_DIR/active/active_blur.jpg"
 magick "$WALLPAPER_DIR/active/active.jpg" -gravity Center -extent 1:1 "$WALLPAPER_DIR/active/active_square.jpg"
 
+$HOME/.config/hypr/scripts/reload.sh &
+
 $HOME/.config/wal/colors.sh "$PAPER"
 
-$HOME/.config/hypr/scripts/reload.sh
 
