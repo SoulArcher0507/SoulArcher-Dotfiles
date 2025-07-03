@@ -57,6 +57,10 @@ XDG_MENU_PREFIX=arch- kbuildsycoca6
 "$SCRIPT_DIR/setup-wallpaper-rofi.sh"
 "$SCRIPT_DIR/dolphin-terminal.sh"
 sudo "$SCRIPT_DIR/sddm-theme-install.sh"
+"$SCRIPT_DIR/dark-mode-gtk.sh"
+
+cp -r Wallpapers $HOME/Pictures
+
 
 systemctl --user enable --now swaync.service
 systemctl --user start --now swaync.service
