@@ -61,3 +61,5 @@ gsfonts
 cups-pdf
 wine
 virt-manager
+syncthing
+
