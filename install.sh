@@ -60,7 +60,13 @@ sudo "$SCRIPT_DIR/sddm-theme-install.sh"
 "$SCRIPT_DIR/dark-mode-gtk.sh"
 
 cp -r Wallpapers $HOME/Pictures/Wallpapers
-
+mkdir -p "Documents"
+mkdir -p "Downloads"
+mkdir -p "Videos"
+mkdir -p "Music"
+mkdir -p "Packages"
+mkdir -p "Public"
+mkdir -p "Templates"
 
 sudo systemctl enable --now power-profiles-daemon.service
 sudo systemctl enable --now cups.service  # stampante

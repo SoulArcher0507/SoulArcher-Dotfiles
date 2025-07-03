@@ -11,7 +11,9 @@ fi
 if [[ "$1" == "toggle" ]]; then
     if pgrep -x hypridle >/dev/null; then
         killall hypridle
+        $0 "status"
     else
         hypridle
+        $0 "status"
     fi
 fi
