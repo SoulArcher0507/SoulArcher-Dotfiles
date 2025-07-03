@@ -131,13 +131,13 @@
     // hypridle inhibitor
     "custom/hypridle": {
         "format": "",
-        "signal": 10,
         "return-type": "json",
         "escape": true,
         "exec-on-event": true,
+        "exec-on-click": true,
         "interval": 60,
         "exec": "~/.config/waybar/scripts/hypridle.sh status",
-        "on-click": "~/.config/waybar/scripts/hypridle.sh toggle && pkill -SIGRTMIN+10 waybar"
+        "on-click": "~/.config/waybar/scripts/hypridle.sh toggle"
     },
 
     // Keyboard State
