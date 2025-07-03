@@ -13,7 +13,7 @@ if [[ "$1" == "toggle" ]]; then
         killall hypridle
         $0 "status"
     else
-        hypridle
+        hypridle &
         $0 "status"
     fi
 fi
