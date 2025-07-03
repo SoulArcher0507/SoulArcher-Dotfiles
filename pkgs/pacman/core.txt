@@ -50,3 +50,14 @@ ttf-hack
 kvantum
 breeze-icons
 breeze
+blueman
+obs-studio
+obsidian
+discover
+cups
+cups-filters 
+ghostscript 
+gsfonts
+cups-pdf
+wine
+virt-manager

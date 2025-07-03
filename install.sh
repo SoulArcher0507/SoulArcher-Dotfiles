@@ -61,6 +61,9 @@ sudo "$SCRIPT_DIR/sddm-theme-install.sh"
 systemctl --user enable --now swaync.service
 systemctl --user start --now swaync.service
 sudo systemctl enable --now power-profiles-daemon.service
+sudo systemctl enable --now cups.service  # stampante
+sudo usermod -aG lp $USER   # add user to printer group
+sudo systemctl enable --now libvirtd.socket
 
 cp -r Wallpapers $HOME/Pictures
 
