@@ -214,13 +214,13 @@ window#waybar.empty #window {
     color: @foreground;
 }
 
-#custom-swayidle.active {
+#custom-hypridle.active {
     color: @foreground;
     margin-right:12px;
     font-size: 20px;
 }
 
-#custom-swayidle.notactive {
+#custom-hypridle.notactive {
     color: #dc2f2f;
     margin-right:12px;
     font-size: 20px;

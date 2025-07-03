@@ -5,3 +5,4 @@ ttf-font-awesome
 ttf-fira-sans
 pacseek
 qt6ct-kde
+kora-icon-theme
