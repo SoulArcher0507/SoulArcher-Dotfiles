@@ -7,10 +7,10 @@ if [[ $EUID -ne 0 ]]; then  # root enabler
   exec sudo "$0" "$@"
 fi
 
-if ! ping -c1 archlinux.org &> /dev/null; then  # verifica connessione internet
-  echo "Connessione a Internet assente."
-  exit 1
-fi
+#if ! ping -c1 archlinux.org &> /dev/null; then  # verifica connessione internet
+#  echo "Connessione a Internet assente."
+#  exit 1
+#fi
 
 PACMAN_CONF="/etc/pacman.conf"
 TIMESTAMP=$(date +"%Y%m%d%H%M%S")
