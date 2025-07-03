@@ -61,14 +61,14 @@ sudo "$SCRIPT_DIR/sddm-theme-install.sh"
 "$SCRIPT_DIR/usb_fat32_packages_installer.sh"
 "$SCRIPT_DIR/vencord.sh"
 
-mkdir -p "Pictures"
-mkdir -p "Documents"
-mkdir -p "Downloads"
-mkdir -p "Videos"
-mkdir -p "Music"
-mkdir -p "Packages"
-mkdir -p "Public"
-mkdir -p "Templates"
+mkdir -p "$HOME/Pictures"
+mkdir -p "$HOME/Documents"
+mkdir -p "$HOME/Downloads"
+mkdir -p "$HOME/Videos"
+mkdir -p "$HOME/Music"
+mkdir -p "$HOME/Packages"
+mkdir -p "$HOME/Public"
+mkdir -p "$HOME/Templates"
 cp -r Wallpapers $HOME/Pictures/Wallpapers
 
 sudo systemctl enable --now power-profiles-daemon.service
