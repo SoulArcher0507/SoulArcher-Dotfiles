@@ -61,7 +61,7 @@ sudo "$SCRIPT_DIR/sddm-theme-install.sh"
 "$SCRIPT_DIR/usb_fat32_packages_installer.sh"
 "$SCRIPT_DIR/vencord.sh"
 
-cp -r Wallpapers $HOME/Pictures/Wallpapers
+mkdir -p "Pictures"
 mkdir -p "Documents"
 mkdir -p "Downloads"
 mkdir -p "Videos"
@@ -69,6 +69,7 @@ mkdir -p "Music"
 mkdir -p "Packages"
 mkdir -p "Public"
 mkdir -p "Templates"
+cp -r Wallpapers $HOME/Pictures/Wallpapers
 
 sudo systemctl enable --now power-profiles-daemon.service
 sudo systemctl enable --now cups.service  # stampante
