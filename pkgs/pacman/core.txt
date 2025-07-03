@@ -55,8 +55,8 @@ obs-studio
 obsidian
 discover
 cups
-cups-filters 
-ghostscript 
+cups-filters
+ghostscript
 gsfonts
 cups-pdf
 wine
