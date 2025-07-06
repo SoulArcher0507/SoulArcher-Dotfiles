@@ -62,4 +62,7 @@ cups-pdf
 wine
 virt-manager
 syncthing
+xdg-desktop-portal-gtk
+sshfs
+fastfetch
 pacman-contrib

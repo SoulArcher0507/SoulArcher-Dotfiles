@@ -71,6 +71,7 @@ mkdir -p "$HOME/Public"
 mkdir -p "$HOME/Templates"
 cp -r Wallpapers $HOME/Pictures/Wallpapers
 
+sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now power-profiles-daemon.service
 sudo systemctl enable --now cups.service  # stampante
 sudo usermod -aG lp $USER   # add user to printer group
