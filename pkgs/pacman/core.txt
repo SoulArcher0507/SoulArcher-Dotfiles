@@ -62,4 +62,4 @@ cups-pdf
 wine
 virt-manager
 syncthing
-
+pacman-contrib
