@@ -1,0 +1,20 @@
+* {
+bg: #0D1928;
+fg: #90cbd7;
+color0: #0D1928;
+color1: #2B5566;
+color2: #585D5B;
+color3: #A06435;
+color4: #DAA64D;
+color5: #216F8E;
+color6: #4E7988;
+color7: #90cbd7;
+color8: #648e96;
+color9: #2B5566;
+color10: #585D5B;
+color11: #A06435;
+color12: #DAA64D;
+color13: #216F8E;
+color14: #4E7988;
+color15: #90cbd7;
+}

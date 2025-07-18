@@ -1,0 +1,50 @@
+/* Colors */
+
+@import 'colors.css';
+@define-color background @background;
+@define-color groupbackground #363636;
+@define-color buttoncolor @color6;
+@define-color bordercolor @color10;
+@define-color fontcolor @color4;
+
+* {
+    font-family: "Fira Sans Semibold";
+    color: @fontcolor;
+}
+
+/* Control Center */
+
+.control-center {
+    border: 3px solid @bordercolor;
+    padding: 10px;
+}
+
+button {
+    border: 0px;
+    min-width: 35px;
+    background: @buttoncolor;
+}
+
+.notification-group-header {
+    font-size: 14px;
+    color: @color4;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    margin:5px;
+}
+
+/* Notification */
+
+.notification {
+    border: 3px solid @bordercolor;
+	border-radius: 10px;
+    padding:10px;
+    color: @color4;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+    color: #ffffff;
+    background: transparent;
+}

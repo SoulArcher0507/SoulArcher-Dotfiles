@@ -45,7 +45,7 @@ mkdir -p "$CONFIG_DIR"
 
 echo "Cartella di destinazione: $CONFIG_DIR"
 
-SELECTED="Soul's theme"
+SELECTED="PC theme"
 echo "Installazione del tema '$SELECTED' in $CONFIG_DIR..."
 
 # Copia ricorsiva del tema selezionato
@@ -60,6 +60,7 @@ sudo "$SCRIPT_DIR/sddm-theme-install.sh"
 "$SCRIPT_DIR/dark-mode-gtk.sh"
 "$SCRIPT_DIR/usb_fat32_packages_installer.sh"
 "$SCRIPT_DIR/vencord.sh"
+"$SCRIPT_DIR/CorradsPC-installer.sh"
 
 mkdir -p "$HOME/Pictures"
 mkdir -p "$HOME/Documents"
@@ -76,6 +77,7 @@ sudo systemctl enable --now power-profiles-daemon.service
 sudo systemctl enable --now cups.service  # stampante
 sudo usermod -aG lp $USER   # add user to printer group
 sudo systemctl enable --now libvirtd.socket
+sudo systemctl enable --now NetworkManager.service
 
 echo "=== Tema '$SELECTED' installato con successo! ==="
 

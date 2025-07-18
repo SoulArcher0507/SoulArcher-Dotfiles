@@ -1,0 +1,385 @@
+// __        __          _                 
+// \ \      / /_ _ _   _| |__   __ _ _ __  
+//  \ \ /\ / / _` | | | | '_ \ / _` | '__| 
+//   \ V  V / (_| | |_| | |_) | (_| | |    
+//    \_/\_/ \__,_|\__, |_.__/ \__,_|_|    
+//                 |___/                   
+//  
+// by SoulArcher
+// ----------------------------------------------------- 
+//
+{
+    // General Settings
+    "layer": "top",
+    "margin-top": 14,
+    "margin-bottom": 0,
+    "margin-left": 14,
+    "margin-right": 14,    
+    "spacing": 0,
+
+    // Load Modules
+    "include": [
+        "modules.json",
+    ],
+
+    // Modules Left
+    "modules-left": [
+        "hyprland/workspaces",
+        "group/quicklinks",
+        "group/taskbar",
+        "custom/empty"
+    ],
+
+    // Modules Center
+    "modules-center": [
+        "hyprland/window",
+        "custom/empty"
+    ],
+
+    // Modules Right    
+    "modules-right": [
+        "custom/updates",
+        "pulseaudio",
+        "bluetooth",
+        "network",
+        "battery", 
+        "power-profiles-daemon",
+        "group/hardware",
+        "group/tools",
+        "tray", 
+        "custom/notification",
+        "custom/exit",
+        "clock"
+    ],
+
+    "custom/chatgpt": {
+        "format": " ",
+        "on-click": "~/.config/waybar/scripts/ai.sh",
+        "tooltip-format": "AI Support"
+    },
+
+    "custom/obsidian": {
+        "format" : " ",
+        "on-click": "obsidian",
+        "tooltip-format": "Obsidian"
+    },
+
+    "custom/quicklink_filemanager": {
+        "format": "",
+        "on-click": "dolphin --new-window",
+        "tooltip-format": "Open Filemanager"
+    },
+
+    // Tools
+    "custom/tools": {
+        "format": "",
+        "tooltip-format": "Tools"
+    },
+
+    // Cliphist
+    "custom/cliphist": {
+        "format": "",
+        "on-click": "sleep 0.1 && ~/.config/waybar/scripts/cliphist.sh",
+        "on-click-right": "sleep 0.1 && ~/.config/waybar/scripts/cliphist.sh d",
+        "on-click-middle": "sleep 0.1 && ~/.config/waybar/scripts/cliphist.sh w",
+        "tooltip-format": "Left: Open clipboard Manager\nRight: Delete an entry\nMiddle: Clear list"
+    },
+
+    // Updates Count
+    "custom/updates": {
+        "format": "{text}",
+        "escape": false,
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "interval": 1800,
+        "on-click": "alacritty --class dotfiles-floating -e ~/.config/waybar/scripts/installupdates.sh",
+        "on-click-right": "alacritty --class dotfiles-floating -e pacseek"
+    },
+
+    // Wallpaper
+    "custom/wallpaper": {
+        "format": "",
+        "on-click": "~/.config/swaybg/wallpaper.sh",
+        "tooltip-format": "Select a wallpaper"
+    },
+
+    // Power Menu
+    "custom/exit": {
+        "format": "",
+        "on-click": "~/.config/hypr/scripts/wlogout.sh",
+        "on-click-right": "hyprlock",
+        "tooltip-format": "Left: Power menu\nRight: Lock screen"
+    },
+
+    // SwayNC
+    "custom/notification": {
+        "tooltip-format": "Left: Notifications\nRight: Do not disturb",
+        "format": "{icon}",
+        "format-icons": {
+        "notification":
+            "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
+        "none": "",
+        "dnd-notification":
+            "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
+        "dnd-none": "",
+        "inhibited-notification":
+            "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification":
+            "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
+        "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+    // hypridle inhibitor
+    "custom/hypridle": {
+        "format": "",
+        "return-type": "json",
+        "escape": true,
+        "exec-on-event": true,
+        "exec-on-click": true,
+        "interval": 60,
+        "exec": "~/.config/waybar/scripts/hypridle.sh status",
+        "on-click": "~/.config/waybar/scripts/hypridle.sh toggle"
+    },
+
+    // Keyboard State
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+        "locked": "",
+        "unlocked": ""
+        }
+    },
+
+    // System tray
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    
+    "custom/taskbar": {
+        "format": "",
+        "tooltip": false
+    },
+
+    // System
+    "custom/system": {
+        "format": "",
+        "tooltip": false
+    },
+
+    // CPU
+    "cpu": {
+        "format": "/ C {usage}% ",
+        "on-click": "alacritty --class dotfiles-floating -e htop"
+    },
+
+    // Memory
+    "memory": {
+        "format": "/ M {}% ",
+        "on-click": "alacritty --class dotfiles-floating -e htop"
+    },
+
+    // Harddisk space used
+    "disk": {
+        "interval": 30,
+        "format": "D {percentage_used}% ",
+        "path": "/",
+        "on-click": "alacritty --class dotfiles-floating -e htop"
+    },
+
+    // Network
+    "network": {
+        "format": "{icon} {ifname}",
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": "  {ifname}",
+        "format-disconnected": "Disconnected ⚠",
+        "tooltip-format": " {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "on-click": "~/.config/waybar/scripts/wifi-menu.sh"  // nm-applet --indicator
+    },
+
+    // Battery
+    "battery": {
+        "states": {
+        // "good": 95,
+        "warning": 30,
+        "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{icon}  {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    // Power Profiles Daemon
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+        }
+    },
+
+    // Pulseaudio
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+        "headphone": " ",
+        "hands-free": " ",
+        "headset": " ",
+        "phone": " ",
+        "portable": " ",
+        "car": " ",
+        "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    // Clock
+    "clock": {
+        "format": "{:%H:%M - %a %d %b}",
+        "timezone": "",
+        "rotate": 0,
+        "format-alt": "{  %d·%m·%y}",
+        "tooltip-format": "<span>{calendar}</span>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#ff6699'><b>{}</b></span>",
+                "days": "<span color='#cdd6f4'><b>{}</b></span>",
+                "weekdays": "<span color='#7CD37C'><b>{}</b></span>",
+                "today": "<span color='#ffcc66'><b>{}</b></span>"
+            }
+        }
+    },
+
+    // Bluetooth
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "",
+        "format-off": "",
+        "interval": 30,
+        "on-click": "blueman-manager",
+        "format-no-controller": ""
+    },
+
+    //Taskbar
+    "wlr/taskbar": {
+        	"format": "{icon}",
+        	"tooltip": true,
+        	"tooltip-format": "{title}",
+        	"on-click": "activate",
+        	"on-click-middle": "close",
+        	"active-first": true,
+            "icon-theme": ["kora"],
+            "icon-size": 20
+   	 },
+
+    // Other
+    "user": {
+        "format": "{user}",
+        "interval": 60,
+        "icon": false
+    },
+
+    // backlight:
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+        ],
+        "scroll-step": 1
+    },
+
+
+    "custom/empty": { 
+    },
+
+    "group/quicklinks": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/chatgpt",
+            "custom/obsidian",
+            "custom/quicklink_filemanager",
+            "custom/empty"
+        ]
+    },
+
+    "group/taskbar": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": true
+        },
+        "modules": ["custom/taskbar", "wlr/taskbar"]
+    },
+
+    // Group Hardware
+    "group/hardware": {
+        "orientation": "inherit",
+        "drawer": {
+        "transition-duration": 300,
+        "children-class": "not-memory",
+        "transition-left-to-right": false
+        },
+        "modules": ["custom/system", "disk", "cpu", "memory"]
+    },
+
+    // Group Tools
+    "group/tools": {
+        "orientation": "inherit",
+        "drawer": {
+        "transition-duration": 300,
+        "children-class": "not-memory",
+        "transition-left-to-right": false
+        },
+        "modules": [
+        "custom/tools",
+        "custom/cliphist",
+        "custom/hypridle",
+        "custom/wallpaper"
+        ]
+    }
+}
+

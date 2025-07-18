@@ -1,0 +1,1 @@
+sh -c 'XAPP_FORCE_GTKWINDOW_ICON="/home/corradoenea/Pictures/Icons/ChatGPT_Icon.png" firefox --class WebApp-ChatGPT7208 --name WebApp-ChatGPT7208 --profile /home/corradoenea/.local/share/ice/firefox/ChatGPT7208 --no-remote "https://chatgpt.com/"'
