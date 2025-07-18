@@ -8,7 +8,6 @@ brightnessctl
 hypridle
 hyprlock
 swaybg
-mako
 dolphin
 flatpak
 networkmanager
