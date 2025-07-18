@@ -53,6 +53,13 @@ foreground=$(jq -r '.special.foreground' "$WAL_COLORS")
     done
 } > "$HYPR"
 
-$HOME/.config/waybar/scripts/svg-color-switcher.sh $foreground
+# percorso del JSON di Pywal
+WAL_COLORS="$HOME/.cache/wal/colors.json"
+
+# prendo il valore esadecimale di color4 (es. "#aabbcc")
+color4=$(jq -r '.colors.color4' "$WAL_COLORS")
+
+$HOME/.config/waybar/scripts/svg-color-switcher-openai.sh $color4
+$HOME/.config/waybar/scripts/svg-color-switcher-obsidian.sh $color4
 
 $HOME/.config/hypr/scripts/reload.sh

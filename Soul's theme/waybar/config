@@ -26,6 +26,7 @@
     "modules-left": [
         "hyprland/workspaces",
         "group/quicklinks",
+        "group/taskbar",
         "custom/empty"
     ],
 
@@ -53,14 +54,22 @@
 
     "custom/chatgpt": {
         "format": " ",
-        "on-click": "scripts/ai.sh",
+        "on-click": "~/.config/waybar/scripts/ai.sh",
         "tooltip-format": "AI Support"
     },
+
+    "custom/obsidian": {
+        "format" : " ",
+        "on-click": "obsidian",
+        "tooltip-format": "Obsidian"
+    },
+
     "custom/quicklink_filemanager": {
         "format": "",
         "on-click": "dolphin --new-window",
         "tooltip-format": "Open Filemanager"
     },
+
     // Tools
     "custom/tools": {
         "format": "",
@@ -155,6 +164,11 @@
     "tray": {
         "icon-size": 21,
         "spacing": 10
+    },
+    
+    "custom/taskbar": {
+        "format": "",
+        "tooltip": false
     },
 
     // System
@@ -251,7 +265,18 @@
     "clock": {
         "format": "{:%H:%M - %a %d %b}",
         "timezone": "",
-        "tooltip": false
+        "rotate": 0,
+        "format-alt": "{  %d·%m·%y}",
+        "tooltip-format": "<span>{calendar}</span>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#ff6699'><b>{}</b></span>",
+                "days": "<span color='#cdd6f4'><b>{}</b></span>",
+                "weekdays": "<span color='#7CD37C'><b>{}</b></span>",
+                "today": "<span color='#ffcc66'><b>{}</b></span>"
+            }
+        }
     },
 
     // Bluetooth
@@ -263,6 +288,18 @@
         "on-click": "blueman-manager",
         "format-no-controller": ""
     },
+
+    //Taskbar
+    "wlr/taskbar": {
+        	"format": "{icon}",
+        	"tooltip": true,
+        	"tooltip-format": "{title}",
+        	"on-click": "activate",
+        	"on-click-middle": "close",
+        	"active-first": true,
+            "icon-theme": ["kora"],
+            "icon-size": 20
+   	 },
 
     // Other
     "user": {
@@ -302,9 +339,20 @@
         "orientation": "horizontal",
         "modules": [
             "custom/chatgpt",
+            "custom/obsidian",
             "custom/quicklink_filemanager",
             "custom/empty"
         ]
+    },
+
+    "group/taskbar": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": true
+        },
+        "modules": ["custom/taskbar", "wlr/taskbar"]
     },
 
     // Group Hardware
@@ -335,4 +383,3 @@
     }
 }
 
-// keyboard-state

@@ -7,7 +7,11 @@ pacman_count=$(checkupdates 2>/dev/null | wc -l)
 aur_count=$(yay -Qu --quiet 2>/dev/null | wc -l)
 
 # Numero di update da flatpak (skip prima riga di header)
-flatpak_count=$(flatpak update --dry-run --app 2>/dev/null | tail -n +2 | wc -l)
+flatpak_count=$(flatpak update --noninteractive --assumeno 2>/dev/null \
+  | tail -n +2 \
+  | grep -v '^[[:space:]]*$' \
+  | wc -l
+)
 
 # somma totale
 total=$((pacman_count + aur_count + flatpak_count))
