@@ -332,6 +332,16 @@
     },
 
 
+    "custom/battery_warning": {
+        // Comando da eseguire: controlla la batteria e, se sotto soglia, lancia la notifica
+        "exec": "~/.config/waybar/scripts/battery-warning.sh",
+        // Ogni quanti secondi far partire lo script
+        "interval": 30,
+        // Non ci interessa mostrare output: lasciamo vuoto il testo
+        "format": "{output}",
+        "return-type": "text"
+    },
+
     "custom/empty": { 
     },
 
