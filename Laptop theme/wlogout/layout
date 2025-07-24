@@ -18,13 +18,13 @@
 }
 {
     "label" : "reboot",
-    "action" : "systemctl reboot",
+    "action" : "systemctl reboot -i",
     "text" : "Restart",
     "keybind" : "r"
 }
 {
     "label" : "shutdown",
-    "action" : "systemctl poweroff",
+    "action" : "systemctl poweroff -i",
     "text" : "Power Off",
     "keybind" : "s"
 }

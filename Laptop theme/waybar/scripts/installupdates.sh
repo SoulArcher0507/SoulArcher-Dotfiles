@@ -22,7 +22,7 @@ readarray -t PACMAN_UPDATES < <(pacman -Qu | awk '{print $1}')
 readarray -t AUR_UPDATES < <(yay -Qua | awk '{print $1}')
 
 # Flatpak (solo le righe con " -> ", poi il primo campo)
-readarray -t FLATPAK_UPDATES < <(flatpak update --dry-run 2>/dev/null \
+readarray -t FLATPAK_UPDATES < <(flatpak update --refresh --dry-run 2>/dev/null \
   | grep ' -> ' \
   | awk '{print $1}')
 
