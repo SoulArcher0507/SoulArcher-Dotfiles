@@ -65,3 +65,5 @@ xdg-desktop-portal-gtk
 sshfs
 fastfetch
 pacman-contrib
+layer-shell-qt
+qt6-wayland
