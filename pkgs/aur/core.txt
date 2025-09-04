@@ -1,4 +1,3 @@
-wlogout
 webapp-manager
 bibata-cursor-theme
 ttf-font-awesome
@@ -7,3 +6,5 @@ pacseek
 qt6ct-kde
 kora-icon-theme
 iwmenu
+resvg
+raw-thumbnailer

@@ -65,3 +65,16 @@ xdg-desktop-portal-gtk
 sshfs
 fastfetch
 pacman-contrib
+audiocd-kio
+baloo
+dolphin-plugins
+kio-admin
+kompare
+ffmpegthumbs
+icoutils
+kdegraphics-thumbnailers
+kdesdk-thumbnailers
+kimageformats
+libappimage
+qt6-imageformats
+taglib
