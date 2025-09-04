@@ -1,8 +1,5 @@
 hyprland
 alacritty
-waybar
-sway
-ttf-nerd-fonts-symbols
 rofi
 brightnessctl
 hypridle
@@ -12,7 +9,6 @@ dolphin
 flatpak
 networkmanager
 network-manager-applet
-swaync
 git
 okular
 pamixer
@@ -80,3 +76,9 @@ kimageformats
 libappimage
 qt6-imageformats
 taglib
+papirus-icon-theme
+ttf-cascadia-code-nerd
+ttf-jetbrains-mono-nerd
+ttf-jetbrains-mono-nerd
+ttf-nerd-fonts-symbols-mono
+libnotify

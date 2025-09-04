@@ -1,26 +1,71 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Setta il wallpaper SENZA rofi.
+# Uso: wallpaper.sh /percorso/assoluto/o/relativo/immagine.(jpg|png|webp|...)
+#
+# Cosa fa:
+#  - verifica/risolve il percorso
+#  - aggiorna i file "active" in ~/Pictures/Wallpapers/active/
+#  - lancia swaybg (kill del precedente incluso)
+#  - aggiorna i colori (pywal o ~/.config/wal/colors.sh se esiste)
+#  - chiama eventuale reload dello stack (es. hypr reload, quickshell, ecc.)
 
-WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
-WALLPAPER_PATH=$(ls -p $WALLPAPER_DIR | grep -v '/$' | while read A ; do  echo -en "$A\x00icon\x1f$WALLPAPER_DIR/$A\n"; done | rofi -dmenu -p "Enter wallpaper name:")
-PAPER="${WALLPAPER_DIR}/${WALLPAPER_PATH}"
+set -Eeuo pipefail
 
+WALL_DIR="${HOME}/Pictures/Wallpapers"
+ACTIVE_DIR="${WALL_DIR}/active"
+mkdir -p "$ACTIVE_DIR"
 
+log() { printf '[wallpaper] %s\n' "$*" >&2; }
 
-if [ -z $WALLPAPER_PATH ]; then
-    exit 1
+# --- argomento obbligatorio ---
+if [[ $# -lt 1 ]]; then
+  echo "Uso: $0 /path/to/image" >&2
+  exit 2
 fi
 
-cp $PAPER "${WALLPAPER_DIR}/active/active.jpg"
+# Risolve percorso assoluto (se esiste)
+PAPER_INPUT="$1"
+if command -v readlink >/dev/null 2>&1; then
+  PAPER="$(readlink -f -- "$PAPER_INPUT" || printf '%s' "$PAPER_INPUT")"
+else
+  # fallback rozzo se readlink non c'è
+  case "$PAPER_INPUT" in
+    /*) PAPER="$PAPER_INPUT" ;;
+     *) PAPER="${PWD}/${PAPER_INPUT}" ;;
+  esac
+fi
 
-pkill -x swaybg
-swaybg -i \"$PAPER\" -m fill &
+[[ -f "$PAPER" ]] || { echo "File non trovato: $PAPER" >&2; exit 1; }
 
-magick "$WALLPAPER_DIR/active/active.jpg" -resize 75% "$WALLPAPER_DIR/active/active_blur.jpg"
-magick "$WALLPAPER_DIR/active/active_blur.jpg" -blur "50x30" "$WALLPAPER_DIR/active/active_blur.jpg"
-magick "$WALLPAPER_DIR/active/active.jpg" -gravity Center -extent 1:1 "$WALLPAPER_DIR/active/active_square.jpg"
+log "Imposto wallpaper: $PAPER"
 
-$HOME/.config/hypr/scripts/reload.sh &
+# --- aggiorna 'active' (best-effort) ---
+# manteniamo 'active.jpg' per compatibilità con script esistenti
+cp -f -- "$PAPER" "$ACTIVE_DIR/active.jpg" 2>/dev/null || true
 
-$HOME/.config/wal/colors.sh "$PAPER"
+# Varianti utili se hai ImageMagick
+if command -v magick >/dev/null 2>&1; then
+  # blur (per sfondi di pannelli, se li usi)
+  magick "$PAPER" -resize 75% "$ACTIVE_DIR/active_blur.jpg" 2>/dev/null || true
+  magick "$ACTIVE_DIR/active_blur.jpg" -blur "50x30" "$ACTIVE_DIR/active_blur.jpg" 2>/dev/null || true
+  # square (iconcine, ecc.)
+  magick "$PAPER" -gravity Center -extent 1:1 "$ACTIVE_DIR/active_square.jpg" 2>/dev/null || true
+fi
 
+# --- imposta sfondo con swaybg (per tutti gli output) ---
+pkill -x swaybg >/dev/null 2>&1 || true
+(swaybg -i "$PAPER" -m fill >/dev/null 2>&1 & disown) || true
 
+# genera varianti (facoltativo)
+if command -v magick >/dev/null 2>&1; then
+  magick "$PAPER" -resize 75% "$ACTIVE_DIR/active_blur.jpg" 2>/dev/null || true
+  magick "$ACTIVE_DIR/active_blur.jpg" -blur "50x30" "$ACTIVE_DIR/active_blur.jpg" 2>/dev/null || true
+  magick "$PAPER" -gravity Center -extent 1:1 "$ACTIVE_DIR/active_square.jpg" 2>/dev/null || true
+fi
+
+# NIENTE reload qui: ci pensa colors.sh
+if [[ -x "$HOME/.config/wal/colors.sh" ]]; then
+  "$HOME/.config/wal/colors.sh" "$PAPER" || true
+elif command -v wal >/dev/null 2>&1; then
+  wal -i "$PAPER" -n -q || true
+fi

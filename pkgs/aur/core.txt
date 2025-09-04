@@ -8,3 +8,4 @@ kora-icon-theme
 iwmenu
 resvg
 raw-thumbnailer
+quickshell
