@@ -5,7 +5,6 @@ ttf-fira-sans
 pacseek
 qt6ct-kde
 kora-icon-theme
-iwmenu
 resvg
 raw-thumbnailer
 quickshell
