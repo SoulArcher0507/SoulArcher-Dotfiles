@@ -84,4 +84,5 @@ ttf-nerd-fonts-symbols-mono
 libnotify
 fprintd
 imagemagick
+bashtop
 bash-completion
