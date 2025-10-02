@@ -86,6 +86,7 @@ fprintd
 imagemagick
 bashtop
 bash-completion
+swww
 plasma-framework5
 qqc2-breeze-style
 plasma5support
