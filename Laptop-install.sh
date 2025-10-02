@@ -29,7 +29,7 @@ fi
 
 # Invoca lo script di installazione pacchetti
 echo "=== Avvio installazione pacchetti ==="
-"$SCRIPT_DIR/packinstall.sh"
+"$SCRIPT_DIR/scripts/packinstall.sh"
 
 echo ""
 # Determina la home dell'utente reale (non root)
@@ -54,12 +54,11 @@ rsync -av --progress "$SCRIPT_DIR/$SELECTED/" "$CONFIG_DIR/"
 # dolphin fix
 XDG_MENU_PREFIX=arch- kbuildsycoca6
 
-"$SCRIPT_DIR/setup-wallpaper-rofi.sh"
-"$SCRIPT_DIR/dolphin-terminal.sh"
+"$SCRIPT_DIR/scripts/setup-wallpaper-rofi.sh"
+"$SCRIPT_DIR/scripts/dolphin-terminal.sh"
 sudo "$SCRIPT_DIR/sddm-theme-install.sh"
-"$SCRIPT_DIR/dark-mode-gtk.sh"
-"$SCRIPT_DIR/usb_fat32_packages_installer.sh"
-"$SCRIPT_DIR/vencord.sh"
+"$SCRIPT_DIR/scripts/dark-mode-gtk.sh"
+"$SCRIPT_DIR/scripts/usb_fat32_packages_installer.sh"
 
 mkdir -p "$HOME/Pictures"
 mkdir -p "$HOME/Documents"

@@ -1,0 +1,11 @@
+webapp-manager
+bibata-cursor-theme
+ttf-font-awesome
+ttf-fira-sans
+pacseek
+qt6ct-kde
+kora-icon-theme
+resvg
+raw-thumbnailer
+quickshell
+galaxybudsclient-bin

@@ -1,13 +1,12 @@
-#!/usr/bin/env bash
-set -Eeuo pipefail
-
+#!/bin/bash
 hyprctl reload
-pkill -x qs
+if command -v swww >/dev/null 2>&1; then
+  if ! swww query >/dev/null 2>&1; then
+    swww init || true
+    sleep 0.05
+  fi
+fi
 
-for i in {1..50}; do
-  pgrep -x qs >/dev/null || break
-  sleep 0.1
-done
-
-qs &
+#pkill qs
+#setsid -f qs -d >/dev/null 2>&1 || nohup qs -d >/dev/null 2>&1 &
 

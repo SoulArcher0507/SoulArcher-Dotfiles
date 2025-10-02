@@ -275,8 +275,6 @@ if [[ -x "$HOME/.config/waybar/scripts/svg-color-switcher-obsidian.sh" ]]; then
 fi
 
 # ===== Reload Hyprland (se presente) =====
-if [[ -x "$HOME/.config/hypr/scripts/reload.sh" ]]; then
-  "$HOME/.config/hypr/scripts/reload.sh" || true
-fi
+$HOME/.config/hypr/scripts/reload.sh
 
 echo "[colors.sh] Aggiornamento completato."

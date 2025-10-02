@@ -85,3 +85,8 @@ libnotify
 fprintd
 imagemagick
 bash-completion
+plasma-framework5
+qqc2-breeze-style
+plasma5support
+libplasma
+plasma-workspace

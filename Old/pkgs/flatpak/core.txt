@@ -1,0 +1,4 @@
+flatseal
+org.videolan.VLC
+org.telegram.desktop
+com.spotify.Client
