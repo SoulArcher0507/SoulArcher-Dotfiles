@@ -84,6 +84,7 @@ ttf-nerd-fonts-symbols-mono
 libnotify
 fprintd
 imagemagick
+bashtop
 bash-completion
 plasma-framework5
 qqc2-breeze-style
