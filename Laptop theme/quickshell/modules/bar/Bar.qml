@@ -1487,7 +1487,7 @@ Variants {
                     }
 
                     function applyWallpaper(absPath) {
-                        const cmd = "$HOME/.config/swaybg/wallpaper.sh " + shQuote(absPath);
+                        const cmd = "$HOME/.config/swww/wallpaper.sh " + shQuote(absPath);
                         setProc.exec(["bash", "-lc", cmd]);
                     }
 
