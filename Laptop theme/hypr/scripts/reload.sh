@@ -1,5 +1,12 @@
 #!/bin/bash
 hyprctl reload
-pkill qs
-qs &
-swaybg -i ~/Pictures/Wallpapers/active/active.jpg -m fill &
+if command -v swww >/dev/null 2>&1; then
+  if ! swww query >/dev/null 2>&1; then
+    swww init || true
+    sleep 0.05
+  fi
+fi
+
+#pkill qs
+#setsid -f qs -d >/dev/null 2>&1 || nohup qs -d >/dev/null 2>&1 &
+
