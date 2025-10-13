@@ -69,6 +69,7 @@ mkdir -p "$HOME/Packages"
 mkdir -p "$HOME/Public"
 mkdir -p "$HOME/Templates"
 cp -r Wallpapers $HOME/Pictures/Wallpapers
+cp -r Icons $HOME/Pictures/Icons
 
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now power-profiles-daemon.service
