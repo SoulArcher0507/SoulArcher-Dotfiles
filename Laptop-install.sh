@@ -71,6 +71,9 @@ mkdir -p "$HOME/Templates"
 cp -r Wallpapers $HOME/Pictures/Wallpapers
 cp -r Icons $HOME/Pictures/Icons
 
+# firewall
+sudo ufw enable
+sudo systemctl enable ufw
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now power-profiles-daemon.service
 sudo systemctl enable --now cups.service  # stampante
