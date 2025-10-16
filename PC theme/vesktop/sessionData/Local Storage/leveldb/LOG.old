@@ -1,0 +1,60 @@
+2025/10/15-21:07:51.618 50f3 Reusing MANIFEST /home/corradoenea/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
+2025/10/15-21:07:51.621 50f3 Recovering log #1800
+2025/10/15-21:07:51.621 50f3 Reusing old log /home/corradoenea/.config/vesktop/sessionData/Local Storage/leveldb/001800.log 
+2025/10/15-21:14:15.615 50f4 Level-0 table #1804: started
+2025/10/15-21:14:15.621 50f4 Level-0 table #1804: 62207 bytes OK
+2025/10/15-21:14:15.627 50f4 Delete type=0 #1800
+2025/10/15-21:35:05.099 50f3 Level-0 table #1806: started
+2025/10/15-21:35:05.104 50f3 Level-0 table #1806: 47369 bytes OK
+2025/10/15-21:35:05.108 50f3 Delete type=0 #1803
+2025/10/15-21:35:05.108 50f3 Compacting 4@0 + 1@1 files
+2025/10/15-21:35:05.111 50f3 Generated table #1807@0: 80 keys, 61301 bytes
+2025/10/15-21:35:05.111 50f3 Compacted 4@0 + 1@1 files => 61301 bytes
+2025/10/15-21:35:05.115 50f3 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/10/15-21:35:05.115 50f3 Delete type=2 #1801
+2025/10/15-21:35:05.115 50f3 Delete type=2 #1804
+2025/10/15-21:35:05.115 50f3 Delete type=2 #1797
+2025/10/15-21:35:05.115 50f3 Delete type=2 #1806
+2025/10/15-21:35:05.115 50f3 Delete type=2 #1795
+2025/10/15-21:41:39.635 50f4 Level-0 table #1809: started
+2025/10/15-21:41:39.641 50f4 Level-0 table #1809: 26965 bytes OK
+2025/10/15-21:41:39.646 50f4 Delete type=0 #1805
+2025/10/15-21:42:32.901 50f4 Level-0 table #1811: started
+2025/10/15-21:42:32.904 50f4 Level-0 table #1811: 32078 bytes OK
+2025/10/15-21:42:32.909 50f4 Delete type=0 #1808
+2025/10/15-21:43:24.127 50f4 Level-0 table #1813: started
+2025/10/15-21:43:24.131 50f4 Level-0 table #1813: 31486 bytes OK
+2025/10/15-21:43:24.136 50f4 Delete type=0 #1810
+2025/10/15-21:48:51.817 50f4 Level-0 table #1815: started
+2025/10/15-21:48:51.822 50f4 Level-0 table #1815: 33372 bytes OK
+2025/10/15-21:48:51.828 50f4 Delete type=0 #1812
+2025/10/15-21:48:51.828 50f4 Compacting 4@0 + 1@1 files
+2025/10/15-21:48:51.832 50f4 Generated table #1816@0: 80 keys, 61580 bytes
+2025/10/15-21:48:51.832 50f4 Compacted 4@0 + 1@1 files => 61580 bytes
+2025/10/15-21:48:51.837 50f4 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/10/15-21:48:51.837 50f4 Delete type=2 #1807
+2025/10/15-21:48:51.837 50f4 Delete type=2 #1811
+2025/10/15-21:48:51.837 50f4 Delete type=2 #1809
+2025/10/15-21:48:51.837 50f4 Delete type=2 #1815
+2025/10/15-21:48:51.837 50f4 Delete type=2 #1813
+2025/10/15-21:56:51.817 50f3 Level-0 table #1818: started
+2025/10/15-21:56:51.823 50f3 Level-0 table #1818: 33187 bytes OK
+2025/10/15-21:56:51.828 50f3 Delete type=0 #1814
+2025/10/15-22:04:51.817 50f3 Level-0 table #1820: started
+2025/10/15-22:04:51.820 50f3 Level-0 table #1820: 33139 bytes OK
+2025/10/15-22:04:51.825 50f3 Delete type=0 #1817
+2025/10/15-22:12:51.817 50f3 Level-0 table #1822: started
+2025/10/15-22:12:51.820 50f3 Level-0 table #1822: 32861 bytes OK
+2025/10/15-22:12:51.826 50f3 Delete type=0 #1819
+2025/10/15-22:30:26.618 50f3 Level-0 table #1824: started
+2025/10/15-22:30:26.623 50f3 Level-0 table #1824: 20212 bytes OK
+2025/10/15-22:30:26.629 50f3 Delete type=0 #1821
+2025/10/15-22:30:26.629 50f3 Compacting 4@0 + 1@1 files
+2025/10/15-22:30:26.632 50f3 Generated table #1825@0: 80 keys, 61504 bytes
+2025/10/15-22:30:26.632 50f3 Compacted 4@0 + 1@1 files => 61504 bytes
+2025/10/15-22:30:26.637 50f3 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/10/15-22:30:26.638 50f3 Delete type=2 #1816
+2025/10/15-22:30:26.638 50f3 Delete type=2 #1818
+2025/10/15-22:30:26.638 50f3 Delete type=2 #1822
+2025/10/15-22:30:26.638 50f3 Delete type=2 #1824
+2025/10/15-22:30:26.638 50f3 Delete type=2 #1820

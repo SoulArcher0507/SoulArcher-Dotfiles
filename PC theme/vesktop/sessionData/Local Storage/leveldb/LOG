@@ -1,0 +1,6 @@
+2025/10/16-16:37:31.436 8a4 Reusing MANIFEST /home/corradoenea/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
+2025/10/16-16:37:31.445 8a4 Recovering log #1823
+2025/10/16-16:37:31.445 8a4 Reusing old log /home/corradoenea/.config/vesktop/sessionData/Local Storage/leveldb/001823.log 
+2025/10/16-16:38:29.984 8a4 Level-0 table #1828: started
+2025/10/16-16:38:29.986 8a4 Level-0 table #1828: 49073 bytes OK
+2025/10/16-16:38:29.990 8a4 Delete type=0 #1823

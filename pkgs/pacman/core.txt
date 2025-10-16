@@ -24,7 +24,7 @@ nmap
 traceroute
 wireshark-qt
 timeshift
-firefox
+vivaldi
 wlroots0.18
 xorg-xwayland
 xdg-desktop-portal-wlr
