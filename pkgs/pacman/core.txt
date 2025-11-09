@@ -92,4 +92,3 @@ qqc2-breeze-style
 plasma5support
 libplasma
 plasma-workspace
-ufw
