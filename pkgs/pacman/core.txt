@@ -4,7 +4,7 @@ rofi
 brightnessctl
 hypridle
 hyprlock
-swaybg
+swaync
 dolphin
 flatpak
 networkmanager
