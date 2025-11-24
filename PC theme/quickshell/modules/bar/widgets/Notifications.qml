@@ -41,7 +41,7 @@ Rectangle {
             if ("contentWidth"  in w) w.contentWidth  = popupWidth
         }
     }
-    
+
     Component.onCompleted: {
         _applyWidth()
         // sincronizza il runtime col valore persistito
@@ -106,8 +106,14 @@ Rectangle {
 
     function _fileExists(urlOrPath) {
         var url = urlOrPath.startsWith("file:") ? urlOrPath : "file://" + urlOrPath
-        try { var xhr = new XMLHttpRequest(); xhr.open("GET", url, false); xhr.send()
-              return xhr.responseText !== null && xhr.responseText.length > 0 } catch (e) { return false }
+        try {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, false);
+            xhr.send();
+            return xhr.responseText !== null && xhr.responseText.length > 0;
+        } catch (e) {
+            return false;
+        }
     }
     function _guessIconFileFromName(name) {
         const home = Labs.StandardPaths.writableLocation(Labs.StandardPaths.HomeLocation)
@@ -138,82 +144,208 @@ Rectangle {
             home + "/.local/share/flatpak/exports/share/icons/hicolor/24x24/apps/",
             home + "/.local/share/flatpak/exports/share/icons/hicolor/16x16/apps/",
             home + "/.local/share/flatpak/exports/share/icons/hicolor/scalable/apps/"
-        ]
-        const exts = [".png", ".svg", ".xpm"]
-        for (let b of bases) for (let e of exts) {
-            let p = b + name + e
-            if (_fileExists(p)) return "file://" + p
+        ];
+        const exts = [".png", ".svg", ".xpm"];
+        for (let b of bases) {
+            for (let e of exts) {
+                let p = b + name + e;
+                if (_fileExists(p)) return "file://" + p;
+            }
         }
-        return ""
+        return "";
     }
 
     function _readDesktopIcon(desktopId) {
-        if (!desktopId) return ""
-        const home = Labs.StandardPaths.writableLocation(Labs.StandardPaths.HomeLocation)
+        if (!desktopId) return "";
+        const home = Labs.StandardPaths.writableLocation(Labs.StandardPaths.HomeLocation);
         const appDirs = [
             "/usr/share/applications/",
             "/usr/local/share/applications/",
             home + "/.local/share/applications/",
             "/var/lib/flatpak/exports/share/applications/",
             home + "/.local/share/flatpak/exports/share/applications/"
-        ]
+        ];
 
         for (let d of appDirs) {
-            let f = d + (desktopId.endsWith(".desktop") ? desktopId : desktopId + ".desktop")
+            let f = d + (desktopId.endsWith(".desktop") ? desktopId : desktopId + ".desktop");
             if (_fileExists(f)) {
                 try {
-                    var xhr = new XMLHttpRequest()
-                    xhr.open("GET", f.startsWith("file:") ? f : "file://" + f, false)
-                    xhr.send()
-                    let m = xhr.responseText.match(/^\s*Icon\s*=\s*(.+)\s*$/mi)
-                    if (m && m[1]) return m[1].trim()
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", f.startsWith("file:") ? f : "file://" + f, false);
+                    xhr.send();
+                    let m = xhr.responseText.match(/^\s*Icon\s*=\s*(.+)\s*$/mi);
+                    if (m && m[1]) return m[1].trim();
                 } catch (e) {}
             }
         }
-        return ""
+        return "";
     }
     function _themeUrl(name) { return "image://icon/" + name }
 
+    // Generate a list of potential icon names from a given identifier.
+    // This helps resolve cases where the app_icon is a reverse domain name
+    // (e.g. org.telegram.desktop) or contains hyphens/underscores.  It
+    // produces candidates by stripping domain prefixes and splitting on
+    // hyphens.  Each candidate is lower‑cased and sanitized.
+    function _generateIconCandidates(name) {
+        var list = [];
+        if (!name || typeof name !== "string") return list;
+        // Normalize: replace spaces and underscores with hyphens and lower case
+        var n = name.replace(/\s+/g, "-").replace(/_/g, "-").toLowerCase();
+        // Split on dots (reverse domain notation) and assemble suffixes
+        var parts = n.split('.');
+        for (var i = 0; i < parts.length; ++i) {
+            var suffix = parts.slice(i).join('-');
+            if (suffix && list.indexOf(suffix) === -1) list.push(suffix);
+        }
+        // Additionally, split on hyphens and include each segment
+        var segs = n.split('-');
+        for (var j = 0; j < segs.length; ++j) {
+            var s = segs[j];
+            if (s && list.indexOf(s) === -1) list.push(s);
+        }
+        return list;
+    }
+
+    // This function guesses the best icon source for a notification.
+    // It caches results based on a composite key built from the notification data.
     function _iconSourceFor(n) {
         function pick(s){ return (s && typeof s === "string" && s.length > 0) ? s : "" }
-        if (!n) return "image://theme/application-x-executable"
+        if (!n) return _themeUrl("application-x-executable")
 
         const h = n.hints || {}
 
+        // Compute cache key from relevant fields. This avoids undefined variable errors and
+        // ensures that repeated calls with the same metadata return quickly.
+        const cacheKey = JSON.stringify({
+            imagePath: pick(h["image-path"]) || pick(h["app_icon"]) || pick(h["image"]) || pick(n.image) || pick(n.appIcon),
+            iconName:  pick(h["icon-name"])  || pick(n.appIconName)    || pick(n.iconName),
+            desktop:   pick(h["desktop-entry"]) || pick(n.desktopEntry) || pick(n.desktopId),
+            appName:   pick(n.appName),
+            pathish:   pick(n && n.image) || pick(n && n.appIcon)
+        })
+
+        if (_iconCache[cacheKey]) return _iconCache[cacheKey]
+
+        // Explicit path or image specification: return immediately if present.
         const explicitPath = pick(h["image-path"]) || pick(h["app_icon"]) ||
                              pick(h["image"]) || pick(n.image) || pick(n.appIcon)
         if (explicitPath) {
-            const p = explicitPath
-            if (p.startsWith("file:") || p.startsWith("/") || p.startsWith("http"))
-                return p.startsWith("file:") || p.startsWith("http") ? p : "file://" + p
-            return _themeUrl(p)
+            const p = explicitPath;
+            let src = "";
+            // If the value looks like a path or URL use it directly; otherwise
+            // try to resolve it as an icon name. KDE Connect sometimes sets
+            // app_icon to a simple name (e.g. "kdeconnect"). In that case,
+            // attempt to locate a real file before falling back to a theme URL.
+            if (p.startsWith("file:") || p.startsWith("/") || p.startsWith("http")) {
+                src = p.startsWith("file:") || p.startsWith("http") ? p : "file://" + p;
+            } else {
+                // First treat the value as a potential desktop-entry id.  Some apps
+                // set app_icon to their desktop ID (e.g. org.telegram.desktop).
+                const dIcon = _readDesktopIcon(p);
+                if (dIcon) {
+                    if (dIcon.startsWith("file:") || dIcon.startsWith("/")) {
+                        src = dIcon.startsWith("file:") ? dIcon : "file://" + dIcon;
+                    } else {
+                        const gdesk = _guessIconFileFromName(dIcon);
+                        src = gdesk || _themeUrl(dIcon.replace(/\.desktop$/, ""));
+                    }
+                }
+                // If not found via desktop entry, attempt to guess directly
+                if (!src) {
+                    const guessExplicit = _guessIconFileFromName(p);
+                    src = guessExplicit;
+                }
+                // Attempt derived candidates when direct guess fails
+                if (!src) {
+                    const cands = _generateIconCandidates(p);
+                    for (var ci = 0; ci < cands.length && !src; ++ci) {
+                        const g = _guessIconFileFromName(cands[ci]);
+                        if (g) { src = g; break; }
+                    }
+                }
+                // Fallback to theme for the first candidate or original
+                if (!src) {
+                    const cands2 = _generateIconCandidates(p);
+                    if (cands2.length > 0) {
+                        src = _themeUrl(cands2[0]);
+                    } else {
+                        src = _themeUrl(p);
+                    }
+                }
+            }
+            _iconCache[cacheKey] = src;
+            return src;
         }
 
+        // If an icon name is provided, try to locate a file; otherwise fall back to theme.
         const byName = pick(h["icon-name"]) || pick(n.appIconName) || pick(n.iconName)
         if (byName) {
-            const guess = _guessIconFileFromName(byName)
-            return guess || ("image://theme/" + byName)
+            // Try to locate a file for the provided icon name.  If that fails,
+            // attempt candidate names by stripping domain prefixes and hyphens.
+            let guess = _guessIconFileFromName(byName);
+            let src = guess;
+            if (!src) {
+                const cands = _generateIconCandidates(byName);
+                for (var ci = 0; ci < cands.length && !src; ++ci) {
+                    const g = _guessIconFileFromName(cands[ci]);
+                    if (g) { src = g; break; }
+                }
+            }
+            if (!src) {
+                const cands2 = _generateIconCandidates(byName);
+                src = (cands2.length > 0) ? ("image://theme/" + cands2[0]) : ("image://theme/" + byName);
+            }
+            _iconCache[cacheKey] = src;
+            return src;
         }
 
+        // Determine icon from desktop file if available.
         const desk = pick(h["desktop-entry"]) || pick(n.desktopEntry) || pick(n.desktopId)
         if (desk) {
             const iconFromDesk = _readDesktopIcon(desk)
+            let src = ""
             if (iconFromDesk) {
                 if (iconFromDesk.startsWith("file:") || iconFromDesk.startsWith("/"))
-                    return iconFromDesk.startsWith("file:") ? iconFromDesk : "file://" + iconFromDesk
-                const g = _guessIconFileFromName(iconFromDesk)
-                return g || _themeUrl(iconFromDesk.replace(/\.desktop$/,""))
+                    src = iconFromDesk.startsWith("file:") ? iconFromDesk : "file://" + iconFromDesk
+                else {
+                    const g = _guessIconFileFromName(iconFromDesk)
+                    src = g || _themeUrl(iconFromDesk.replace(/\.desktop$/, ""))
+                }
+            } else {
+                src = _themeUrl(desk.replace(/\.desktop$/, ""))
             }
-            return _themeUrl(desk.replace(/\.desktop$/,""))
+            _iconCache[cacheKey] = src
+            return src
         }
 
+        // Derive an icon from the application name; attempt several variations to handle
+        // differences in naming (e.g. kde connect -> kdeconnect, kde-connect, kde_connect).
         const appn = pick(n.appName)
         if (appn) {
-            const name = appn.replace(/\s+/g,"-").toLowerCase()
-            const g = _guessIconFileFromName(name)
-            return g || _themeUrl(name)
+            // Normalize base form (hyphenated)
+            const base = appn.replace(/\s+/g, "-").toLowerCase()
+            const variations = [
+                base,
+                base.replace(/-/g, ""),
+                base.replace(/-/g, "_"),
+                base + "-app"
+            ]
+            for (let candidate of variations) {
+                const g = _guessIconFileFromName(candidate)
+                if (g) {
+                    _iconCache[cacheKey] = g
+                    return g
+                }
+                // fall back to theme icon; keep trying other variations in case of failure
+                const t = "image://theme/" + candidate
+                if (!_iconCache[cacheKey]) _iconCache[cacheKey] = t
+            }
+            // Use the last fallback assigned during iteration
+            return _iconCache[cacheKey]
         }
 
+        // Pathish fallback: treat image or appIcon as potential path or theme name.
         const pathish = pick(n && n.image) || pick(n && n.appIcon)
         if (pathish) {
             const low = pathish.toLowerCase()
@@ -222,10 +354,14 @@ Rectangle {
             const src = (isUrl || isFileLike)
                 ? (low.startsWith("file:") || isUrl ? pathish : "file://" + pathish)
                 : ("image://theme/" + pathish)
-            _iconCache[key] = src; return src
+            _iconCache[cacheKey] = src
+            return src
         }
 
-        return _themeUrl("dialog-information")
+        // Final fallback: use a generic dialog-information icon.
+        const fallback = _themeUrl("dialog-information")
+        _iconCache[cacheKey] = fallback
+        return fallback
     }
 
     function artFor(p){
@@ -233,8 +369,8 @@ Rectangle {
         const key = JSON.stringify({ art:p.trackArtUrl, desk:p.desktopEntry, id:p.identity })
         if (_artCache[key]) return _artCache[key]
         if (p.trackArtUrl && p.trackArtUrl.length>0) { _artCache[key] = p.trackArtUrl; return _artCache[key] }
-        if (p.desktopEntry && p.desktopEntry.length>0) { _artCache[key] = _themeUrl(p.desktopEntry.replace(/\.desktop$/,"")) }
-        if (p.identity && p.identity.length>0) { _artCache[key] = _themeUrl(p.identity.replace(/\s+/g,"-").toLowerCase()) }
+        if (p.desktopEntry && p.desktopEntry.length>0) { _artCache[key] = _themeUrl(p.desktopEntry.replace(/\.desktop$/, "")) }
+        if (p.identity && p.identity.length>0) { _artCache[key] = _themeUrl(p.identity.replace(/\s+/g, "-").toLowerCase()) }
         _artCache[key] = _themeUrl("audio-x-generic")
         return _artCache[key]
     }
@@ -506,30 +642,28 @@ Rectangle {
 
             model: server.trackedNotifications
 
-
-
             // ====== DELEGATE ======
             delegate: Rectangle {
                 width: notificationList.width - notificationList._vbarWidth
                 radius: 6
                 color: cardBg
                 border.color: panelBorder
-            
+
                 // ogni elemento è una Notification, accessibile come modelData
                 property string iconSource: root._iconSourceFor(modelData)
-            
+
                 Column {
                     id: contentCol
                     anchors.fill: parent
                     anchors.margins: 8
                     spacing: 6
-            
+
                     Row {
                         id: headerRow
                         spacing: 8
                         anchors.left: parent.left
                         anchors.right: parent.right
-            
+
                         Image {
                             id: appIcon
                             width: 22; height: 22
@@ -538,9 +672,12 @@ Rectangle {
                             asynchronous: true
                             smooth: true; cache: true
                             onStatusChanged: {
+                                // When the icon fails to load, attempt multiple fallbacks.
                                 if (status === Image.Error) {
-                                    if (source.startsWith("image://icon/"))      { source = source.replace("image://icon/","image://theme/"); return }
-                                    else if (source.startsWith("image://theme/")){ source = source.replace("image://theme/","image://icon/");  return }
+                                    // Try switching between icon and theme providers.
+                                    if (source.startsWith("image://icon/"))      { source = source.replace("image://icon/", "image://theme/"); return }
+                                    else if (source.startsWith("image://theme/")){ source = source.replace("image://theme/", "image://icon/");  return }
+                                    // Try reading the desktop entry for an icon
                                     const h = (modelData && modelData.hints) ? modelData.hints : {}
                                     const desk = (modelData && (modelData.desktopEntry || modelData.desktopId)) || h["desktop-entry"]
                                     let fallback = ""
@@ -553,14 +690,25 @@ Rectangle {
                                         }
                                     }
                                     if (!fallback) {
-                                        const byName = (modelData && (modelData.appIconName || modelData.iconName)) || h["icon-name"] || ""
-                                        fallback = root._guessIconFileFromName(byName)
+                                        const byName = (modelData && (modelData.appIconName || modelData.iconName)) || h["icon-name"] || "";
+                                        fallback = root._guessIconFileFromName(byName);
+                                        // se ancora non abbiamo trovato nulla prova a risolvere appIcon/image come nome semplice
+                                        if (!fallback) {
+                                            const explicit = (modelData && (modelData.appIcon || modelData.image)) || "";
+                                            if (explicit && typeof explicit === "string") {
+                                                // considera solo nomi senza schema/path (nessun '/':, 'file:', 'http')
+                                                const isPathLike = explicit.startsWith("file:") || explicit.startsWith("/") || explicit.includes(":");
+                                                if (!isPathLike) {
+                                                    fallback = root._guessIconFileFromName(explicit);
+                                                }
+                                            }
+                                        }
                                     }
-                                    source = fallback || _themeUrl("application-x-executable")
+                                    source = fallback || _themeUrl("application-x-executable");
                                 }
                             }
                         }
-            
+
                         Text {
                             id: titleText
                             text: modelData.summary
@@ -573,7 +721,7 @@ Rectangle {
                             width: parent.width - appIcon.width - headerRow.spacing
                         }
                     }
-            
+
                     Text {
                         id: bodyText
                         width: parent.width
@@ -584,7 +732,7 @@ Rectangle {
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         elide: Text.ElideRight
                     }
-            
+
                     // Azioni (se presenti)
                     Flow {
                         id: actionsFlow
@@ -592,7 +740,7 @@ Rectangle {
                         spacing: 8
                         visible: modelData.actions && modelData.actions.length > 0
                         height: visible ? implicitHeight : 0
-            
+
                         Repeater {
                             model: modelData.actions
                             delegate: Button {
@@ -688,7 +836,6 @@ Rectangle {
                 anchors.fill: parent
                 color: "transparent"
                 visible: notificationList.count === 0
-
 
                 Text {
                     anchors.centerIn: parent

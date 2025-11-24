@@ -1,2 +1,3 @@
-google-chrome-stable --app="https://chatgpt.com/" --class=WebApp-ChatGPT5355 --name=WebApp-ChatGPT5355
+vivaldi-stable --app="https://chatgpt.com" --class=WebApp-ChatGPT2998 --name=WebApp-ChatGPT2998 --user-data-dir=/home/corradoenea/.local/share/ice/profiles/ChatGPT2998
+
 
