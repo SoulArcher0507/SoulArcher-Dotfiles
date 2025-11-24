@@ -8,4 +8,4 @@ kora-icon-theme
 resvg
 raw-thumbnailer
 quickshell
-firefox
+vicinae
