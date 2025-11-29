@@ -7,6 +7,6 @@ if command -v swww >/dev/null 2>&1; then
   fi
 fi
 
+swaync-client -rs
 #pkill qs
 #setsid -f qs -d >/dev/null 2>&1 || nohup qs -d >/dev/null 2>&1 &
-
