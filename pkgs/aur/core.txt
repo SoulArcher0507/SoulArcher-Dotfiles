@@ -9,3 +9,4 @@ resvg
 raw-thumbnailer
 quickshell
 vicinae
+epson-inkjet-printer-escpr2
