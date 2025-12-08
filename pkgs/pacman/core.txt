@@ -93,3 +93,6 @@ plasma5support
 libplasma
 plasma-workspace
 firewalld
+vlc
+libvlc
+hyprpolkitagent
