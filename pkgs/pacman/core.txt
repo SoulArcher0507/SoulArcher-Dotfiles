@@ -96,3 +96,4 @@ firewalld
 vlc
 libvlc
 hyprpolkitagent
+lact
