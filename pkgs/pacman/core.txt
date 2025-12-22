@@ -94,6 +94,7 @@ libplasma
 plasma-workspace
 firewalld
 vlc
+vlc-plugin-ffmpeg
 libvlc
 hyprpolkitagent
 lact
