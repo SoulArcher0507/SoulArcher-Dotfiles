@@ -1,0 +1,80 @@
+/* Colors */
+
+@import 'colors.css';
+@define-color background mix(@bg, @fg, 0.1);
+/* @define-color groupbackground mix(@bg, @fg, 0.35); */
+/*
+ * Usa un viola medio per lo sfondo dei bottoni (simile alle tessere della barra):
+ */
+@define-color buttoncolor @color3;
+@define-color bordercolor mix(@bg, @fg, 0.35);
+
+@define-color fontcolor @accent;
+
+* {
+    font-family: "Fira Sans Semibold";
+    color: @fontcolor;
+}
+
+/* Control Center */
+
+.control-center {
+    border: 1px solid @bordercolor;
+    padding: 10px;
+    border-radius: 10px;
+    background: @background;
+}
+
+button {
+    border: 1px;
+    min-width: 35px;
+    background: @background;
+    border: 1px solid @bordercolor;
+}
+/*
+.notification-group-header {
+    font-size: 14px;
+    color: @fontcolor;
+}
+*/
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    margin:5px;
+}
+
+/* Colore della “track” (barra vuota) */
+.widget-volume scale trough {
+    background-color: mix(@bg, @fg, 0.25);
+    border-radius: 999px;
+}
+
+/* Parte riempita (da sinistra fino alla manopola) */
+.widget-volume scale highlight {
+    background-color: @accent;    /* o @color4, @accent2, ecc. */
+    border-radius: 999px;
+}
+
+
+
+/* Contenitore del gruppo notifiche nel pannello */
+.widget-notifications .notification-group {
+    background: transparent;          /* niente rettangolo grigio */
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* Se il box interno ha ancora uno sfondo, annullalo qui */
+.widget-notifications .notification-group > box {
+    background: transparent;
+}
+
+/* Notification */
+
+.notification {
+    border: 1px solid @bordercolor;
+	  border-radius: 10px;
+    padding:10px;
+    background: @background;
+}
+
+
+

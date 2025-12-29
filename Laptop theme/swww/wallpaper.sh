@@ -21,12 +21,15 @@ if command -v readlink >/dev/null 2>&1; then
 else
   # fallback rozzo se readlink non c'è
   case "$PAPER_INPUT" in
-    /*) PAPER="$PAPER_INPUT" ;;
-     *) PAPER="${PWD}/${PAPER_INPUT}" ;;
+  /*) PAPER="$PAPER_INPUT" ;;
+  *) PAPER="${PWD}/${PAPER_INPUT}" ;;
   esac
 fi
 
-[[ -f "$PAPER" ]] || { echo "File non trovato: $PAPER" >&2; exit 1; }
+[[ -f "$PAPER" ]] || {
+  echo "File non trovato: $PAPER" >&2
+  exit 1
+}
 
 log "Imposto wallpaper: $PAPER"
 
@@ -34,9 +37,9 @@ log "Imposto wallpaper: $PAPER"
 # manteniamo 'active.jpg' per compatibilità con script esistenti
 cp -f -- "$PAPER" "$ACTIVE_DIR/active.jpg" 2>/dev/null || true
 
-# Varianti utili se hai ImageMagick
+# Magick
 if command -v magick >/dev/null 2>&1; then
-  # blur (per sfondi di pannelli, se li usi)
+  # blur
   magick "$PAPER" -resize 75% "$ACTIVE_DIR/active_blur.jpg" 2>/dev/null || true
   magick "$ACTIVE_DIR/active_blur.jpg" -blur "50x30" "$ACTIVE_DIR/active_blur.jpg" 2>/dev/null || true
   # square (iconcine, ecc.)
@@ -45,7 +48,7 @@ fi
 
 # --- imposta sfondo con swww (per tutti gli output) ---
 # Parametri transizione (personalizzabili)
-TRANSITION="any"             # altri esempi: grow, wipe, fade, center, wave
+TRANSITION="any" # altri esempi: grow, wipe, fade, center, wave
 TRANSITION_FPS=60
 TRANSITION_DURATION=1.0
 TRANSITION_BEZIER=".43,1.19,1,.4"
@@ -64,12 +67,11 @@ if ! swww query >/dev/null 2>&1; then
 fi
 
 swww img "$PAPER" \
-    -t "$TRANSITION" \
-    --transition-fps "$TRANSITION_FPS" \
-    --transition-duration "$TRANSITION_DURATION" \
-    --transition-bezier "$TRANSITION_BEZIER" \
-    >/dev/null 2>&1 || true
-
+  -t "$TRANSITION" \
+  --transition-fps "$TRANSITION_FPS" \
+  --transition-duration "$TRANSITION_DURATION" \
+  --transition-bezier "$TRANSITION_BEZIER" \
+  >/dev/null 2>&1 || true
 
 # NIENTE reload qui: ci pensa colors.sh
 if [[ -x "$HOME/.config/wal/colors.sh" ]]; then
