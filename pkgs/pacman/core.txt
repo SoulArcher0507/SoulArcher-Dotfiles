@@ -84,7 +84,7 @@ ttf-nerd-fonts-symbols-mono
 libnotify
 fprintd
 imagemagick
-bashtop
+btop
 bash-completion
 swww
 plasma-framework5
